@@ -12,7 +12,7 @@ const ListNav = ({ menu, subMenu }: ListNavPropsType) => {
 				{menu}
 				<ChevronDown />
 			</button>
-			<ul className="absolute hidden group-hover:block bg-[#98A1BC] shadow-lg p-3 rounded-lg">
+			<ul className="absolute hidden group-hover:block bg-[#98A1BC] shadow-lg rounded-lg">
 				{subMenu.map((e, index) => (
 					<li key={index}>
 						<a

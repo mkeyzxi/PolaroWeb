@@ -1,8 +1,8 @@
-import ListNav from "./ListNav";
+import ListNav from "../ui/ListNav";
 
 const Nav = () => {
 	return (
-		<nav className="p-4 bg-[#555879]">
+		<nav className="bg-[#555879]">
 			<ul className="flex gap-6 font-medium text-[#F4EBD3]">
 				<li className="relative group">
 					<button className="flex hover:text-[#DED3C4]">Beranda</button>
