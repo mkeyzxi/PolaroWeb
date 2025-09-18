@@ -1,15 +1,14 @@
 type NavPropsType = {
 	children?: React.ReactNode;
-}
+};
 
-const Header = (props: NavPropsType) => {
-	const { children} = props;
+const Header = ({ children }: NavPropsType) => {
 	return (
-		<header className="bg-white shadow-md p-4 flex flex-row items-center w-full justify-between">
-			<h1 className="text-2xl font-bold text-gray-800">Polaroid Generator</h1>
+		<header className="bg-[#555879] shadow-md px-10 flex flex-row items-center w-full justify-between">
+			<h1 className="text-2xl font-bold text-[#F4EBD3]">Polaroid Generator</h1>
 			{children}
 		</header>
 	);
-}
+};
 
 export default Header;

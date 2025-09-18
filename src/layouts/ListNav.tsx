@@ -1,29 +1,31 @@
-
 import { ChevronDown } from "lucide-react";
+
 type ListNavPropsType = {
-	menu: string,
+	menu: string;
 	subMenu: string[];
-}
+};
 
-const ListNav = (props: ListNavPropsType) => {
-	
-	const { menu, subMenu } = props;
+const ListNav = ({ menu, subMenu }: ListNavPropsType) => {
 	return (
-		<li className="relative group" >
-			
-			<button className={`hover:text-indigo-600 flex`}>{menu}<ChevronDown /></button>
-			<ul className="absolute hidden group-hover:block bg-white shadow-lg p-3 rounded-lg">
-				{/* <li><a href="#" className="block px-4 py-2 hover:bg-gray-100">{subMenu}</a></li>
-				<li><a href="#" className="block px-4 py-2 hover:bg-gray-100">{subMenu}</a></li>
-				<li><a href="#" className="block px-4 py-2 hover:bg-gray-100">{subMenu}</a></li> */}
-
-				{subMenu.map((e, index) => {
-					return (<li key={index}><a href="#" className="block px-4 py-2 hover:bg-gray-100">{e}</a></li>
-					)
-				})}
+		<li className="relative group">
+			<button className="flex hover:text-[#DED3C4]">
+				{menu}
+				<ChevronDown />
+			</button>
+			<ul className="absolute hidden group-hover:block bg-[#98A1BC] shadow-lg p-3 rounded-lg">
+				{subMenu.map((e, index) => (
+					<li key={index}>
+						<a
+							href="#"
+							className="block px-4 py-2 text-[#F4EBD3] hover:bg-[#DED3C4] hover:text-[#555879] rounded-md"
+						>
+							{e}
+						</a>
+					</li>
+				))}
 			</ul>
 		</li>
-	)
-}
+	);
+};
 
 export default ListNav;
