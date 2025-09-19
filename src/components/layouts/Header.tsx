@@ -4,8 +4,8 @@ type NavPropsType = {
 
 const Header = ({ children }: NavPropsType) => {
 	return (
-		<header className="bg-[#555879] shadow-md px-10 flex flex-row items-center w-full justify-between">
-			<h1 className="text-2xl font-bold text-[#F4EBD3]">Polaroid Generator</h1>
+		<header className="bg-[var(--color-primary)] shadow-md flex  justify-center rounded-full fixed top-2 right-2 left-2">
+			
 			{children}
 		</header>
 	);
