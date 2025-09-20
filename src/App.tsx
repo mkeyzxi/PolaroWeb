@@ -7,18 +7,21 @@ import ClassicPolaroid from './components/pages/ClassicPolaroid';
 import CreativeLayouts from './components/pages/CreativeLayouts';
 import PhotoPrints from './components/pages/PhotoPrints';
 import StripLayout from './components/pages/StripLayout';
-import Beranda from './components/pages/Beranda';
+import Beranda from './components/layouts/HeroSection';
+import Header from './components/layouts/Header';
+import Nav from './components/layouts/Nav';
 
 function App() {
 
   return (
     <>
+        <Header><Nav /></Header>
       <Routes>
         <Route path='/' element={<Beranda />} />
-        <Route path='/classic-polaroid/:type' element={<ClassicPolaroid />} />
-        <Route path='/strip-layout/:type' element={<CreativeLayouts />} />
-        <Route path='/photo-prints/:type' element={<PhotoPrints />} />
-        <Route path='/creative-layouts/:type' element={<StripLayout />} />
+        <Route path='/classic-polaroid' element={<ClassicPolaroid />} />
+        <Route path='/strip-layout' element={<CreativeLayouts />} />
+        <Route path='/photo-prints' element={<PhotoPrints />} />
+        <Route path='/creative-layouts' element={<StripLayout />} />
       </Routes>
     </>
   )
