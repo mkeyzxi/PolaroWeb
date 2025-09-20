@@ -24,9 +24,9 @@ const Header = ({ children }: NavPropsType) => {
 	const [open, setOpen] = useState(false);
 
 	return (
-		<header className="bg-transparent backdrop-blur-md border border-solid  shadow-md flex items-center justify-between rounded-full fixed top-2 mx-auto w-full  z-50 px-4  ">
+		<header className=" flex items-center justify-between rounded-full fixed top-2 mx-auto w-full  z-50 px-4  ">
 			{/* Logo / Brand */}
-			<div className="text-white font-bold py-3 md:hidden">PolaroWeb</div>
+			<div className="text-white font-bold  py-3 md:hidden">PolaroWeb</div>
 
 			{/* Tombol hamburger untuk tablet & mobile */}
 			<button
@@ -37,7 +37,7 @@ const Header = ({ children }: NavPropsType) => {
 			</button>
 
 			{/* Navigasi desktop */}
-			<div className="hidden lg:block mx-auto">{children}</div>
+			<div className="hidden lg:block mx-auto  bg-transparent backdrop-blur-md border border-solid  shadow-md px-5 py-2 rounded-full">{children}</div>
 
 			{/* Navigasi tablet & mobile */}
 			{open && (

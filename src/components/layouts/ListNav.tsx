@@ -51,13 +51,14 @@ const ListNav = ({ menu, subMenu }: ListNavPropsType) => {
           lg:min-w-[150px]
           lg:mt-0
           mt-2 w-full bg-transparent
+          
         "
       >
         {subMenu.map((e, index) => (
           <li key={index} className="w-full">
             <a
               href="#"
-              className="block px-4 py-2 text-[#F4EBD3] hover:bg-[#DED3C4] hover:text-[#555879] rounded-md"
+              className="block px-4 py-2 text-[#F4EBD3]  hover:bg-[#DED3C4] hover:text-[#555879] rounded-md"
             >
               {e}
             </a>
