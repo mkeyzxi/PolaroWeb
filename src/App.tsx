@@ -8,14 +8,14 @@ import CreativeLayouts from './components/pages/CreativeLayouts';
 import PhotoPrints from './components/pages/PhotoPrints';
 import StripLayout from './components/pages/StripLayout';
 import Beranda from './components/pages/Beranda';
-// import Header from './components/layouts/Header';
-// import Nav from './components/layouts/Nav';
+import Header from './components/layouts/Header';
+import Nav from './components/layouts/Nav';
 
 function App() {
 
   return (
     <>
-        {/* <Header><Nav /></Header> */}
+        <Header><Nav /></Header>
       <Routes>
         <Route path='/' element={<Beranda />} />
         <Route path='/classic-polaroid/:type' element={<ClassicPolaroid />} />

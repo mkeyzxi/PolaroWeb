@@ -1,28 +1,25 @@
 import DotGrid from '../DotGrid';
+import Stack from '../Stack';
+import TextType from '../TextType';
+import TargetCursor from '../TargetCursor';
 
 const Beranda = () => {
+	const images = [
+		{ id: 1, img: 'https://images.unsplash.com/photo-1480074568708-e7b720bb3f09?q=80&w=500&auto=format' },
+		{ id: 2, img: 'https://images.unsplash.com/photo-1449844908441-8829872d2607?q=80&w=500&auto=format' },
+		{ id: 3, img: 'https://images.unsplash.com/photo-1452626212852-811d58933cae?q=80&w=500&auto=format' },
+		{ id: 4, img: 'https://images.unsplash.com/photo-1572120360610-d971b9d7767c?q=80&w=500&auto=format' },
+	];
+
 	return (
-		<div style={{
-			width: '100%',
-			height: '600px',
-			position: 'relative',
-			overflow: 'hidden'
-		}}>
+		<div className="relative w-full overflow-hidden bg-[#020618] ">
 			{/* Background */}
-			<div style={{
-				position: 'absolute',
-				top: 0,
-				left: 0,
-				width: '100%',
-				height: '100%',
-				zIndex: 0, // background paling belakang,
-				
-			}}>
+			<div className="absolute inset-0 z-0 ">
 				<DotGrid
 					dotSize={10}
 					gap={15}
-					baseColor="#5227FF"
-					activeColor="#5227FF"
+					baseColor="#020618"
+					activeColor="#0084D1"
 					proximity={120}
 					shockRadius={250}
 					shockStrength={5}
@@ -31,18 +28,69 @@ const Beranda = () => {
 				/>
 			</div>
 
-			{/* Konten di atas background */}
-			<div style={{
-				position: 'relative',
-				zIndex: 1,
-				color: '#000', // warna teks agar terlihat
-				padding: '20px'
-			}}>
-				<h1>Ini Konten di Atas Background</h1>
-				<p>dasds</p>
+			{/* Konten */}
+			<div className="relative z-10 grid gap-8 px-4 py-16 md:grid-cols-2 md:px-12 lg:px-24 lg:py-24 md:h-[100vh] justify-between items-center ">
+				{/* Kolom Kiri */}
+				<div className="flex flex-col gap-y-2">
+					<TextType
+						text={[
+							'Welcome to Polaroweb!',
+							'Create Digital Polaroids',
+							'Classic Modern Experience',
+							'Capture, Create, Keep',
+						]}
+						typingSpeed={75}
+						pauseDuration={1500}
+						showCursor={true}
+						cursorCharacter="|"
+						className="text-2xl md:text-4xl lg:text-5xl font-bold text-white"
+					/>
+
+					<p className="mt-4 text-sm text-[var(--color-light)] md:text-base lg:text-lg">
+						Dengan Polaroweb, Anda bebas mendokumentasikan momen berharga menggunakan berbagai gaya polaroid yang unik dan kreatif.
+					</p>
+
+					{/* Tombol */}
+					<div className="flex flex-col gap-4 mt-4 rounded-lg ">
+						<TargetCursor spinDuration={2} hideDefaultCursor={true} />
+
+						<div className="grid grid-cols-1 gap-3 sm:grid-cols-3 text-sm ">
+							<button className="cursor-target rounded-xl border border-dotted border-[var(--color-secondary)] px-6 py-3 text-[var(--color-accent)] font-extrabold uppercase text-center">
+								Classic Polaroid
+							</button>
+							<button className="cursor-target rounded-xl border border-dotted border-[var(--color-secondary)] px-6 py-3 text-[var(--color-accent)] font-extrabold uppercase text-center">
+								Strip Layout
+							</button>
+							<button className="cursor-target rounded-xl border border-dotted border-[var(--color-secondary)] px-6 py-3 text-[var(--color-accent)] font-extrabold uppercase text-center">
+								Photo Prints
+							</button>
+						</div>
+
+						<div className="flex justify-center">
+							<button className="text-sm cursor-target w-full rounded-xl border border-dotted border-[var(--color-secondary)] px-6 py-3 text-[var(--color-accent)] font-extrabold uppercase">
+								Creative Layout
+							</button>
+						</div>
+					</div>
+				</div>
+
+				{/* Kolom Kanan */}
+				<div className="flex items-center justify-center">
+					<Stack
+						randomRotation={true}
+						sensitivity={180}
+						sendToBackOnClick={false}
+						// ubah width height lebih responsif
+						cardDimensions={{
+							width: typeof window !== 'undefined' && window.innerWidth < 640 ? 200 : 300,
+							height: typeof window !== 'undefined' && window.innerWidth < 640 ? 300 : 400,
+						}}
+						cardsData={images}
+					/>
+				</div>
 			</div>
 		</div>
 	);
-}
+};
 
 export default Beranda;
