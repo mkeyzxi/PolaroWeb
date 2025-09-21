@@ -35,18 +35,23 @@ const Nav = () => {
         items-start lg:items-center
         py-4 lg:py-0
       ">
-        <Link to={"/classic-polaroid"}><ListNav menu="Classic Polaroid" subMenu={["Square", "Wide", "Mini"]} /></Link>
-        <ListNav menu="Strip Layout" subMenu={["3 Strip", "4 Strip"]} />
-        <li className="relative group mx-0 lg:mx-16">
-          <button className="flex hover:text-[var(--color-accent)] transition-colors text-md   font-medium">
-            POLAROWEB
-          </button>
-        </li>
-        <ListNav menu="Photo Prints" subMenu={["2R", "3R", "4R"]} />
-        <ListNav
+        <Link to={"/classic-polaroid"}><ListNav menu="Classic Polaroid" /></Link>
+        <Link to={"/strip-layout"}> <ListNav menu="Strip Layout" /></Link>
+
+        <Link to={"/"} className="">
+          <li className="relative group mx-0 lg:mx-16">
+            <button className="flex hover:text-[var(--color-accent)] transition-colors text-md   font-medium">
+              POLAROWEB
+            </button>
+          </li></Link>
+
+        <Link to="/photo-prints"> <ListNav menu="Photo Prints" /></Link>
+        <Link to="/creative-layouts"><ListNav
           menu="Creative Layouts"
-          subMenu={["Snapshot A", "Skapshota", "Tiny", "Sovare"]}
-        />
+
+        /></Link>
+
+
       </ul>
     </nav>
   );

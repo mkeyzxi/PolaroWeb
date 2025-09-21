@@ -8,16 +8,19 @@ import CreativeLayouts from './components/pages/CreativeLayouts';
 import PhotoPrints from './components/pages/PhotoPrints';
 import StripLayout from './components/pages/StripLayout';
 import Beranda from './components/layouts/HeroSection';
-import Header from './components/layouts/Header';
-import Nav from './components/layouts/Nav';
+// import Header from './components/layouts/Header';
+// import Nav from './components/layouts/Nav';
+// import PolaroidCustom from './components/ui/CardPolaroweb';
+import CardCustom from './components/layouts/CardCustom';
 
 function App() {
 
   return (
     <>
-        <Header><Nav /></Header>
+        {/* <Header><Nav /></Header> */}
       <Routes>
         <Route path='/' element={<Beranda />} />
+        <Route path='/card' element={<CardCustom />} />
         <Route path='/classic-polaroid' element={<ClassicPolaroid />} />
         <Route path='/strip-layout' element={<CreativeLayouts />} />
         <Route path='/photo-prints' element={<PhotoPrints />} />
