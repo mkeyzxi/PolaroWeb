@@ -3,3 +3,8 @@ export interface MediaDeviceInfoExtended extends MediaDeviceInfo {
   deviceId: string;
   label: string;
 }
+
+export type PolaroidPropsType = {
+  judul: string,
+  children?: React.ReactNode
+}
