@@ -1,36 +1,94 @@
-// import { useState } from 'react'
-// import reactLogo from './assets/react.svg'
-// import viteLogo from '/vite.svg'
-import {Routes, Route} from 'react-router-dom'
-import './App.css'
-import ClassicPolaroid from './components/pages/ClassicPolaroid';
-import CreativeLayouts from './components/pages/CreativeLayouts';
-import PhotoPrints from './components/pages/PhotoPrints';
-import StripLayout from './components/pages/StripLayout';
-import Beranda from './components/layouts/HeroSection';
+// // import { useState } from 'react'
+// // import reactLogo from './assets/react.svg'
+// // import viteLogo from '/vite.svg'
+// import {Routes, Route} from 'react-router-dom'
+// import './App.css'
+// import ClassicPolaroid from './components/pages/ClassicPolaroid';
+// import CreativeLayouts from './components/pages/CreativeLayouts';
+// import PhotoPrints from './components/pages/PhotoPrints';
+// import StripLayout from './components/pages/StripLayout';
+// import Beranda from './components/layouts/HeroSection';
 // import Header from './components/layouts/Header';
 // import Nav from './components/layouts/Nav';
-// import PolaroidCustom from './components/ui/CardPolaroweb';
-import CardCustom from './components/layouts/CardCustom';
+// // import PolaroidCustom from './components/ui/CardPolaroweb';
+// // import CardCustom from './components/layouts/CardCustom';
+// // import TitleForPage from './components/TItleForPage';
+// import CustomPage from './components/pages/CustomPage';
+
+// function App() {
+
+//   return (
+//     <>
+//         <Header><Nav /></Header>
+//       <Routes>
+//         <Route path='/' element={<Beranda />} />
+//         {/* <Route path='/card' element={<TitleForPage header="Photo Prints" subHeader={["2R", "3R", "4R"]} />} /> */}
+//         <Route path='/card' element={<CustomPage />} />
+//         <Route path='/classic-polaroid' element={<ClassicPolaroid />} />
+//         <Route path='/strip-layout' element={<CreativeLayouts />} />
+//         <Route path='/photo-prints' element={<PhotoPrints />} />
+//         <Route path='/creative-layouts' element={<StripLayout />} />
+//       </Routes>
+//     </>
+//   )
+// }
+
+// export default App
+
+// src/App.tsx
+import { Routes, Route } from "react-router-dom";
+import "./App.css";
+import Beranda from "./components/layouts/HeroSection";
+import Header from "./components/layouts/Header";
+import Nav from "./components/layouts/Nav";
+// import CustomPage from "./components/pages/CustomPage";
+// import CreativeLayoutPage from "./components/pages/CreativeLayouts";
+import CustomPage from "./components/pages/CustomPage";
+import CreativeLayoutsPage from "./components/pages/CreativeLayoutsPage";
+import ClassicPolaroidPage from "./components/pages/ClassicPolaroidPage";
+import PhotoPrintsPage from "./components/pages/PhotoPrintsPage";
+import StripLayoutPage from "./components/pages/StripLayoutPage";
 
 function App() {
-
   return (
     <>
-        {/* <Header><Nav /></Header> */}
+      <Header>
+        <Nav />
+      </Header>
       <Routes>
-        <Route path='/' element={<Beranda />} />
-        <Route path='/card' element={<CardCustom />} />
-        <Route path='/classic-polaroid' element={<ClassicPolaroid />} />
-        <Route path='/strip-layout' element={<CreativeLayouts />} />
-        <Route path='/photo-prints' element={<PhotoPrints />} />
-        <Route path='/creative-layouts' element={<StripLayout />} />
+        <Route path="/" element={<Beranda />} />
+        {/* Dynamic page */}
+        <Route path="/:category" element={<CustomPage />} />
+        <Route path="/creative-layouts/:type" element={<CreativeLayoutsPage />} />
+        <Route path="/classic-polaroid/:type" element={<ClassicPolaroidPage />} />
+        <Route path="/photo-prints/:type" element={<PhotoPrintsPage />} />
+        <Route path="/strip-layout/:type" element={<StripLayoutPage />} />
       </Routes>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // kira-kira seperti ini
 // import React, { useRef, useState, useEffect } from "react";

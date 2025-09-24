@@ -6,7 +6,7 @@ import type { PolaroidPropsType } from '@/utils/types-props';
 
 const CardPolaroweb = ({ judul,  children }: PolaroidPropsType) => {
 	return (
-		<div className="max-w-[280px] bg-white  shadow-lg flex flex-col overflow-hidden p-5 gap-2">
+		<div className="max-w-[170px] bg-white  shadow-lg flex flex-col overflow-hidden p-5 gap-2">
 
 			{children}
 
