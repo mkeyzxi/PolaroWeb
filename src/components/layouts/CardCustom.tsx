@@ -1,14 +1,15 @@
 import CardPolaroweb from "../ui/CardPolaroweb";
 
-const CardCustom = () => {
-	  return <div>
-		<CardPolaroweb judul="Polaroid Custom">
-			<div className="w-full aspect-[1/1] bg-gray-200 overflow-hidden">
-				
-			</div>
+const CardCustom = ({ judul}: { judul: string }) => {
+	return <div>
+		<CardPolaroweb judul={judul}>
+			{/* <div className="w-full aspect-[1/1] bg-gray-200 overflow-hidden">
+
+			</div> */}
 			
+
 		</CardPolaroweb>
-	  </div>;
+	</div>;
 }
 
 export default CardCustom;
