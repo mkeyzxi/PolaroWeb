@@ -37,7 +37,7 @@ const Beranda = () => {
 			<div className="relative z-10 grid gap-8 px-4 py-16 md:grid-cols-2 md:px-12 lg:px-24 lg:py-24 md:h-[100vh] justify-between items-center ">
 				{/* Kolom Kiri */}
 
-				<div className="flex flex-col gap-y-2">
+				<div className="flex flex-col gap-y-2 order-last md:order-first">
 					<TextType
 						text={[
 							'Welcome to Polaroweb!',
@@ -82,7 +82,8 @@ const Beranda = () => {
 					</div>
 				</div>
 
-				<AnimatedContent
+				<div className="order-first md:order-last">
+					<AnimatedContent
 					distance={150}
 					direction="horizontal"
 					reverse={false}
@@ -93,6 +94,7 @@ const Beranda = () => {
 					scale={1.1}
 					threshold={0.2}
 					delay={0.3}
+					
 				>
 					{/* Kolom Kanan */}
 					<div className="flex items-start md:items-center justify-center">
@@ -109,6 +111,7 @@ const Beranda = () => {
 						/>
 					</div>
 				</AnimatedContent>
+				</div>
 			</div>
 
 

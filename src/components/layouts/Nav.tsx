@@ -27,11 +27,11 @@ import ListNav from "./ListNav";
 
 const Nav = () => {
   return (
-    <nav>
+    <nav >
       <ul className="
-        flex flex-col lg:flex-row   /* mobile & tablet column, desktop row */
+        flex flex-col lg:flex-row  text-lg text-left w-[200px] md:w-full p-5 transition-all relative   /* mobile & tablet column, desktop row */
         lg:gap-20
-        font-normal text-sm text-[var(--color-light)]
+        font-normal md:text-sm text-[var(--color-light)]
         items-start lg:items-center
         py-4 lg:py-0
       ">
