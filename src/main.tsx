@@ -6,10 +6,12 @@ import './index.css'
 // import Nav from './layouts/Nav.tsx'
 import App from './App.tsx'
 import { BrowserRouter } from 'react-router-dom'
+
 // import Footer from './layouts/Footer.tsx'
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <BrowserRouter>
+    
     <App />
     </BrowserRouter>
 

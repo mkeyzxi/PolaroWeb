@@ -54,9 +54,9 @@ const CustomPage = () => {
 	
 
 	return (
-		<main className="py-16">
+		<main className="p-4 md:mt-15">
 			<TitleForPage {...{category, header, subHeader }} />
-			<h3 className="text-lg md:text-xl font-medium text-gray-700 text-center max-w-3xl mx-auto my-5">
+			<h3 className="text-sm px-5 md:p-0 mb-8  md:text-lg font-medium text-[var(--color-primary)] text-center max-w-3xl mx-auto ">
 				{description}
 			</h3>
 			<div className="gap-10 justify-center flex flex-wrap items-start">
