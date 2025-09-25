@@ -21,7 +21,7 @@ const ClassicPolaroid: React.FC = () => {
 	const videoRef = useRef<HTMLVideoElement | null>(null);
 	const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
-	const [devices, setDevices] = useState<MediaDeviceInfoExtended[]>([]);
+	// const [devices, setDevices] = useState<MediaDeviceInfoExtended[]>([]);
 	const [selectedDevice, setSelectedDevice] = useState<string>("");
 
 	const { stream, startCamera } = useCamera();
@@ -37,7 +37,7 @@ const allowedLayouts = ["square", "wide", "mini"];
 			const videoDevices = devices.filter(
 				(d) => d.kind === "videoinput"
 			) as MediaDeviceInfoExtended[];
-			setDevices(videoDevices);
+			// setDevices(videoDevices);
 			if (videoDevices.length > 0) {
 				setSelectedDevice(videoDevices[0].deviceId);
 			}
@@ -180,7 +180,7 @@ const allowedLayouts = ["square", "wide", "mini"];
 			</div>
 
 			<div className="flex justify-between gap-5 px-5 md:gap-2 fixed backdrop-blur-sm md:backdrop-blur-none rounded-2xl bottom-0 md:bg-transparent  p-3 md:bottom-5 left-0 right-0 md:justify-center flex-wrap mt-4 items-center">
-				<select
+				{/* <select
 					value={selectedDevice}
 					onChange={(e) => setSelectedDevice(e.target.value)}
 					className="px-2 py-1 w-full md:w-auto border rounded text-[var(--color-primary)] border-[var(--color-accent)] transition-all outline-[var(--color-primary)]"
@@ -190,7 +190,7 @@ const allowedLayouts = ["square", "wide", "mini"];
 							{d.label || `Kamera ${i + 1}`}
 						</option>
 					))}
-				</select>
+				</select> */}
 
 				<button
 					className=" px-4 py-3 md:py-2 bg-[var(--color-accent)] flex gap-2 text-white rounded-full md:rounded-[2px]"
