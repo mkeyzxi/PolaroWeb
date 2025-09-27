@@ -157,7 +157,7 @@ const allowedLayouts = ["square", "wide", "mini"];
 	};
 
 	return (
-		<div className="p-4 text-center md:mt-15">
+		<div className="p-4 text-center md:mt-15 mb-20 md:mb-0">
 			<TitleForPage header="Classic Polaroid" category="classic-polaroid" subHeader={allowedLayouts} />
 			<p className="mb-4">
 				<strong>{layout.toUpperCase()}</strong> | <span className="text-[var(--color-accent)] font-bold">Ambil {maxPhotos} foto</span> 

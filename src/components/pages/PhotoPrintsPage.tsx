@@ -394,7 +394,7 @@ const PhotoPrintsPage: React.FC = () => {
   };
 
   return (
-    <div className="p-4 text-center md:mt-15">
+    <div className="p-4 text-center md:mt-15 mb-20 md:mb-0">
       <TitleForPage
         header="Photo Prints"
         category="photo-prints"
