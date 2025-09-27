@@ -30,7 +30,7 @@ const Header = ({ children }: NavPropsType) => {
 
 			{/* Tombol hamburger untuk tablet & mobile */}
 			<button
-				className="lg:hidden text-white p-2"
+				className="md:hidden text-white p-2"
 				onClick={() => setOpen(!open)}
 			>
 				{open ? <X /> : <Menu />}
@@ -38,7 +38,7 @@ const Header = ({ children }: NavPropsType) => {
 			</button>
 
 			{/* Navigasi desktop */}
-			<div className="hidden lg:block mx-auto  bg-[var(--color-primary)]  backdrop-blur-md border border-solid  shadow-md px-5 py-2 rounded-full">{children}</div>
+			<div className="hidden md:block mx-auto  bg-[var(--color-primary)]  backdrop-blur-md border border-solid  shadow-md px-5 py-2 rounded-full">{children}</div>
 
 			{/* Navigasi tablet & mobile */}
 			{open && (
