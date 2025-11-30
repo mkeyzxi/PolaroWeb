@@ -7,11 +7,11 @@ import FadeContent from '../FadeContent';
 
 const Beranda = () => {
 	const images = [
-		{ id: 5, img: './image/polaroid-lima.png' },
-		{ id: 4, img: './image/polaroid-empat.png' },
-		{ id: 3, img: './image/polaroid-tiga.png' },
-		{ id: 2, img: './image/polaroid-dua.png' },
-		{ id: 1, img: './image/polaroid-satu.png' },
+		{ id: 5, img: './image/polaroid-lima.avif' },
+		{ id: 4, img: './image/polaroid-empat.avif' },
+		{ id: 3, img: './image/polaroid-tiga.avif' },
+		{ id: 2, img: './image/polaroid-dua.avif' },
+		{ id: 1, img: './image/polaroid-satu.avif' },
 	];
 
 	return (
