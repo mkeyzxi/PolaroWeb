@@ -16,7 +16,7 @@ export const dataPolaroid: Record<string, PolaroidCategory> = {
     header: "Strip Layout",
     description:
       "Cetakan foto dalam bentuk strip yang unik dan dinamis, sempurna untuk menceritakan serangkaian momen.",
-    items: ["3 Strips", "4 Strips"],
+    items: ["3strips", "4strips"],
   },
   "photo-prints": {
     header: "Photo Prints",
@@ -28,7 +28,7 @@ export const dataPolaroid: Record<string, PolaroidCategory> = {
     header: "Creative Layouts",
     description:
       "Cetakan foto dengan format inovatif yang memungkinkan Anda mengeksplorasi kreativitas dan tampil beda.",
-    items: ["Snapshoot 6", "Snapshoot 8"],
+    items: ["Snapshoot6", "Snapshoot8"],
   },
 };
-  
+

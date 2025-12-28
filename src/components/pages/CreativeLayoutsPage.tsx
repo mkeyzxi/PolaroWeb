@@ -9,6 +9,7 @@ import { useCamera } from "../../hooks/useCamera";
 import { Camera, CameraOff, ImageDown, Palette } from "lucide-react";
 import TitleForPage from "../TItleForPage";
 import BackgroundPicker from "../BackgroundPicker";
+import { useBackground } from "../../context/BackgroundContext";
 
 const allowedLayouts = ["snapshoot6", "snapshoot8"];
 
@@ -54,9 +55,8 @@ const CreativeLayoutsPage: React.FC = () => {
   const [photoCount, setPhotoCount] = useState<number>(0);
   const [maxPhotos, setMaxPhotos] = useState<number>(1);
 
-  // State untuk background
-  const [backgroundImage, setBackgroundImage] = useState<HTMLImageElement | null>(null);
-  const [backgroundColor, setBackgroundColor] = useState<string>("#ffffff");
+  // Global background state from context
+  const { backgroundImage, backgroundColor, setBackgroundImage, setBackgroundColor } = useBackground();
   const [isPickerOpen, setIsPickerOpen] = useState<boolean>(false);
 
   const slotsRef = useRef<{ x: number; y: number; w: number; h: number }[]>([]);
@@ -73,6 +73,12 @@ const CreativeLayoutsPage: React.FC = () => {
       }
     });
   }, []);
+
+  // Reset photos when type changes (URL param changes)
+  useEffect(() => {
+    setPhotoCount(0);
+    capturedPhotosRef.current = [];
+  }, [normalizedType]);
 
   // Handler untuk background picker
   const handleSelectImage = (img: HTMLImageElement) => {
@@ -98,11 +104,6 @@ const CreativeLayoutsPage: React.FC = () => {
     const config = getLayoutFromType(validType);
     setLayout(config.layout);
     setMaxPhotos(config.maxPhotos);
-
-    if (!backgroundImage && backgroundColor === "#ffffff") {
-      setPhotoCount(0);
-      capturedPhotosRef.current = [];
-    }
 
     const extraBottomPadding = 80;
     canvas.width = config.width;
@@ -149,7 +150,7 @@ const CreativeLayoutsPage: React.FC = () => {
         ctx.strokeRect(slot.x, slot.y, slot.w, slot.h);
       }
     });
-  }, [normalizedType, backgroundImage, backgroundColor]);
+  }, [normalizedType, backgroundImage, backgroundColor, photoCount]);
 
   // Ambil foto ke slot
   const takePhoto = () => {
