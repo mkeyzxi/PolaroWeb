@@ -1,4 +1,3 @@
-
 import React, { useRef, useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import {
@@ -7,8 +6,35 @@ import {
 	type MediaDeviceInfoExtended,
 } from "../../lib/utils";
 import { useCamera } from "../../hooks/useCamera";
-import { Camera, CameraOff, ImageDown } from "lucide-react";
+import { Camera, CameraOff, ImageDown, Palette } from "lucide-react";
 import TitleForPage from "../TItleForPage";
+import BackgroundPicker from "../BackgroundPicker";
+
+const allowedLayouts = ["3strips", "4strips"];
+
+// Helper function to draw image with cover mode
+const drawImageCover = (
+	ctx: CanvasRenderingContext2D,
+	img: HTMLImageElement,
+	canvasWidth: number,
+	canvasHeight: number
+) => {
+	const imgAspect = img.width / img.height;
+	const canvasAspect = canvasWidth / canvasHeight;
+	let sx, sy, sw, sh;
+	if (imgAspect > canvasAspect) {
+		sh = img.height;
+		sw = img.height * canvasAspect;
+		sy = 0;
+		sx = (img.width - sw) / 2;
+	} else {
+		sw = img.width;
+		sh = img.width / canvasAspect;
+		sx = 0;
+		sy = (img.height - sh) / 2;
+	}
+	ctx.drawImage(img, sx, sy, sw, sh, 0, 0, canvasWidth, canvasHeight);
+};
 
 const StripsPage: React.FC = () => {
 	const { type } = useParams<{ type: string }>();
@@ -21,7 +47,6 @@ const StripsPage: React.FC = () => {
 	const videoRef = useRef<HTMLVideoElement | null>(null);
 	const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
-	// const [devices, setDevices] = useState<MediaDeviceInfoExtended[]>([]);
 	const [selectedDevice, setSelectedDevice] = useState<string>("");
 
 	const { stream, startCamera } = useCamera();
@@ -29,20 +54,35 @@ const StripsPage: React.FC = () => {
 	const [photoCount, setPhotoCount] = useState<number>(0);
 	const [maxPhotos, setMaxPhotos] = useState<number>(1);
 
+	// State untuk background
+	const [backgroundImage, setBackgroundImage] = useState<HTMLImageElement | null>(null);
+	const [backgroundColor, setBackgroundColor] = useState<string>("#ffffff");
+	const [isPickerOpen, setIsPickerOpen] = useState<boolean>(false);
+
 	const slotsRef = useRef<{ x: number; y: number; w: number; h: number }[]>([]);
-const allowedLayouts = ["3strips", "4strips"];
+	const capturedPhotosRef = useRef<{ slotIndex: number; imageData: ImageData }[]>([]);
+
 	// Load daftar kamera
 	useEffect(() => {
 		navigator.mediaDevices.enumerateDevices().then((devices) => {
 			const videoDevices = devices.filter(
 				(d) => d.kind === "videoinput"
 			) as MediaDeviceInfoExtended[];
-			// setDevices(videoDevices);
 			if (videoDevices.length > 0) {
 				setSelectedDevice(videoDevices[0].deviceId);
 			}
 		});
 	}, []);
+
+	// Handler untuk background picker
+	const handleSelectImage = (img: HTMLImageElement) => {
+		setBackgroundImage(img);
+	};
+
+	const handleSelectColor = (color: string) => {
+		setBackgroundImage(null);
+		setBackgroundColor(color);
+	};
 
 	// Setup layout canvas
 	useEffect(() => {
@@ -52,14 +92,17 @@ const allowedLayouts = ["3strips", "4strips"];
 		const ctx = canvas.getContext("2d");
 		if (!ctx) return;
 
-		
 		let validType = normalizedType;
 		if (!allowedLayouts.includes(validType)) validType = "3strips";
 
 		const config = getLayoutFromType(validType);
 		setLayout(config.layout);
 		setMaxPhotos(config.maxPhotos);
-		setPhotoCount(0);
+
+		if (!backgroundImage && backgroundColor === "#ffffff") {
+			setPhotoCount(0);
+			capturedPhotosRef.current = [];
+		}
 
 		const extraBottomPadding = 90;
 		canvas.width = config.width;
@@ -77,8 +120,14 @@ const allowedLayouts = ["3strips", "4strips"];
 		slotsRef.current = [];
 
 		ctx.clearRect(0, 0, canvas.width, canvas.height);
-		ctx.fillStyle = "#fff";
-		ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+		// Draw background: custom image atau warna
+		if (backgroundImage) {
+			drawImageCover(ctx, backgroundImage, canvas.width, canvas.height);
+		} else {
+			ctx.fillStyle = backgroundColor;
+			ctx.fillRect(0, 0, canvas.width, canvas.height);
+		}
 
 		ctx.strokeStyle = "black";
 		ctx.lineWidth = 1;
@@ -91,7 +140,16 @@ const allowedLayouts = ["3strips", "4strips"];
 				slotsRef.current.push({ x, y, w: slotWidth, h: slotHeight });
 			}
 		}
-	}, [normalizedType]);
+
+		// Redraw captured photos
+		capturedPhotosRef.current.forEach(({ slotIndex, imageData }) => {
+			const slot = slotsRef.current[slotIndex];
+			if (slot) {
+				ctx.putImageData(imageData, slot.x, slot.y);
+				ctx.strokeRect(slot.x, slot.y, slot.w, slot.h);
+			}
+		});
+	}, [normalizedType, backgroundImage, backgroundColor]);
 
 	// Ambil foto ke slot
 	const takePhoto = () => {
@@ -113,36 +171,31 @@ const allowedLayouts = ["3strips", "4strips"];
 
 		let sx = 0, sy = 0, sw = videoWidth, sh = videoHeight;
 
-		// crop sesuai aspect ratio slot
 		if (videoAspect > slotAspect) {
-			// video lebih lebar → crop horizontal
 			sw = videoHeight * slotAspect;
 			sx = (videoWidth - sw) / 2;
 		} else {
-			// video lebih tinggi → crop vertikal
 			sh = videoWidth / slotAspect;
 			sy = (videoHeight - sh) / 2;
 		}
 
-		// drawImage dengan crop → pas di slot
 		ctx.drawImage(video, sx, sy, sw, sh, slot.x, slot.y, slot.w, slot.h);
 
-		// gambar border slot
-		// ctx.strokeStyle = "black";
-		// ctx.lineWidth = 1;
+		const imageData = ctx.getImageData(slot.x, slot.y, slot.w, slot.h);
+		capturedPhotosRef.current.push({ slotIndex: photoCount, imageData });
+
 		ctx.strokeRect(slot.x, slot.y, slot.w, slot.h);
 
 		setPhotoCount((p) => p + 1);
 	};
 
-	// Download canvas dengan border tebal
+	// Download canvas
 	const downloadPhoto = () => {
 		const canvas = canvasRef.current;
 		if (!canvas) return;
 		const ctx = canvas.getContext("2d");
 		if (!ctx) return;
 
-		// Tambahkan border tebal di seluruh canvas
 		ctx.strokeStyle = "black";
 		ctx.lineWidth = 1;
 		ctx.strokeRect(0, 0, canvas.width, canvas.height);
@@ -152,15 +205,14 @@ const allowedLayouts = ["3strips", "4strips"];
 		link.href = canvas.toDataURL("image/png");
 		link.click();
 
-		// Reset border jika ingin ambil foto lagi
 		ctx.lineWidth = 1;
 	};
 
 	return (
-		<div className="p-4 text-center md:mt-15  mb-20 md:mb-0">
+		<div className="p-4 text-center md:mt-15 mb-20 md:mb-0">
 			<TitleForPage header="Strip Layout" category="strip-layout" subHeader={allowedLayouts} />
 			<p className="mb-4">
-			<strong>{layout.toUpperCase()}</strong> | <span className="text-[var(--color-accent)] font-bold">Ambil {maxPhotos} foto</span> 
+				<strong>{layout.toUpperCase()}</strong> | <span className="text-[var(--color-accent)] font-bold">Ambil {maxPhotos} foto</span>
 			</p>
 
 			<div className="flex flex-wrap gap-10 justify-center items-start">
@@ -179,21 +231,16 @@ const allowedLayouts = ["3strips", "4strips"];
 				</div>
 			</div>
 
-			<div className="flex justify-between gap-5 px-5 md:gap-2 fixed backdrop-blur-sm md:backdrop-blur-none rounded-2xl bottom-0 md:bg-transparent  p-3 md:bottom-5 left-0 right-0 md:justify-center flex-wrap mt-4 items-center">
-				{/* <select
-					value={selectedDevice}
-					onChange={(e) => setSelectedDevice(e.target.value)}
-					className="px-2 py-1 w-full md:w-auto border rounded text-[var(--color-primary)] border-[var(--color-accent)] transition-all outline-[var(--color-primary)]"
+			<div className="flex justify-between gap-5 px-5 md:gap-2 fixed backdrop-blur-sm md:backdrop-blur-none rounded-2xl bottom-0 md:bg-transparent p-3 md:bottom-5 left-0 right-0 md:justify-center flex-wrap mt-4 items-center">
+				<button
+					className="px-4 py-3 md:py-2 bg-purple-600 flex gap-2 text-white rounded-full md:rounded-[2px]"
+					onClick={() => setIsPickerOpen(true)}
 				>
-					{devices.map((d, i) => (
-						<option key={d.deviceId} value={d.deviceId}>
-							{d.label || `Kamera ${i + 1}`}
-						</option>
-					))}
-				</select> */}
+					<Palette /> <div className="hidden md:block">Pilih Background</div>
+				</button>
 
 				<button
-					className=" px-4 py-3 md:py-2 bg-[var(--color-accent)] flex gap-2 text-white rounded-full md:rounded-[2px]"
+					className="px-4 py-3 md:py-2 bg-[var(--color-accent)] flex gap-2 text-white rounded-full md:rounded-[2px]"
 					onClick={() => {
 						if (videoRef.current) startCamera(selectedDevice, videoRef.current);
 					}}
@@ -202,7 +249,7 @@ const allowedLayouts = ["3strips", "4strips"];
 				</button>
 
 				<button
-					className=" px-4 py-3 md:py-2 bg-[var(--color-secondary)] text-white rounded-full md:rounded-[2px] flex gap-2"
+					className="px-4 py-3 md:py-2 bg-[var(--color-secondary)] text-white rounded-full md:rounded-[2px] flex gap-2"
 					onClick={takePhoto}
 					disabled={!stream}
 				>
@@ -210,16 +257,24 @@ const allowedLayouts = ["3strips", "4strips"];
 				</button>
 
 				<button
-					className=" px-4 py-3 md:py-2 bg-[var(--color-primary)] text-white rounded-full md:rounded-[2px] flex gap-2"
+					className="px-4 py-3 md:py-2 bg-[var(--color-primary)] text-white rounded-full md:rounded-[2px] flex gap-2"
 					onClick={downloadPhoto}
 					disabled={photoCount < maxPhotos}
 				>
 					<ImageDown /><div className="hidden md:block">Download</div>
 				</button>
 			</div>
+
+			{/* Background Picker Modal */}
+			<BackgroundPicker
+				isOpen={isPickerOpen}
+				onClose={() => setIsPickerOpen(false)}
+				onSelectImage={handleSelectImage}
+				onSelectColor={handleSelectColor}
+				currentColor={backgroundColor}
+			/>
 		</div>
 	);
 };
 
 export default StripsPage;
-// 
