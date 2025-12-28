@@ -35,7 +35,7 @@ const CustomPage = () => {
 			containerClass: "flex gap-2 flex-col", // default container
 		};
 
-		if (item.includes("3 Strip")) {
+		if (item.includes("3Strip")) {
 			props = { count: 3, aspect: "aspect-[1/1]", containerClass: "flex gap-2 flex-col" };
 		} else if (item.includes("4 Strip")) {
 			props = { count: 4, aspect: "aspect-[1/1]", containerClass: "flex gap-2 flex-col" };
@@ -51,11 +51,11 @@ const CustomPage = () => {
 		return props;
 	};
 
-	
+
 
 	return (
 		<main className="p-4 md:mt-15">
-			<TitleForPage {...{category, header, subHeader }} />
+			<TitleForPage {...{ category, header, subHeader }} />
 			<h3 className="text-sm px-5 md:p-0 mb-8  md:text-lg font-medium text-[var(--color-primary)] text-center max-w-3xl mx-auto ">
 				{description}
 			</h3>
@@ -72,7 +72,7 @@ const CustomPage = () => {
 									></div>
 								))}
 							</div>
-						
+
 						</CardPolaroweb>
 					);
 				})}

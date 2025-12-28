@@ -83,8 +83,8 @@ const BackgroundPicker: React.FC<BackgroundPickerProps> = ({
 					<button
 						onClick={() => setActiveTab("presets")}
 						className={`flex-1 py-3 px-4 flex items-center justify-center gap-2 transition-colors ${activeTab === "presets"
-								? "text-purple-600 border-b-2 border-purple-600 bg-purple-50"
-								: "text-gray-600 hover:bg-gray-50"
+							? "text-[var(--color-primary)] border-b-2 border-[var(--color-primary)] bg-[var(--color-primary)]/10"
+							: "text-gray-600 hover:bg-gray-50"
 							}`}
 					>
 						<Image size={18} />
@@ -93,8 +93,8 @@ const BackgroundPicker: React.FC<BackgroundPickerProps> = ({
 					<button
 						onClick={() => setActiveTab("color")}
 						className={`flex-1 py-3 px-4 flex items-center justify-center gap-2 transition-colors ${activeTab === "color"
-								? "text-purple-600 border-b-2 border-purple-600 bg-purple-50"
-								: "text-gray-600 hover:bg-gray-50"
+							? "text-[var(--color-primary)] border-b-2 border-[var(--color-primary)] bg-[var(--color-primary)]/10"
+							: "text-gray-600 hover:bg-gray-50"
 							}`}
 					>
 						<Palette size={18} />
@@ -103,8 +103,8 @@ const BackgroundPicker: React.FC<BackgroundPickerProps> = ({
 					<button
 						onClick={() => setActiveTab("upload")}
 						className={`flex-1 py-3 px-4 flex items-center justify-center gap-2 transition-colors ${activeTab === "upload"
-								? "text-purple-600 border-b-2 border-purple-600 bg-purple-50"
-								: "text-gray-600 hover:bg-gray-50"
+							? "text-[var(--color-primary)] border-b-2 border-[var(--color-primary)] bg-[var(--color-primary)]/10"
+							: "text-gray-600 hover:bg-gray-50"
 							}`}
 					>
 						<Upload size={18} />
@@ -121,7 +121,7 @@ const BackgroundPicker: React.FC<BackgroundPickerProps> = ({
 								<button
 									key={bg.id}
 									onClick={() => handlePresetClick(bg.image)}
-									className="aspect-square rounded-lg overflow-hidden border-2 border-transparent hover:border-purple-500 transition-all hover:scale-105 shadow-sm"
+									className="aspect-square rounded-lg overflow-hidden border-2 border-transparent hover:border-[var(--color-primary)] transition-all hover:scale-105 shadow-sm"
 								>
 									<img
 										src={bg.image}
@@ -150,7 +150,7 @@ const BackgroundPicker: React.FC<BackgroundPickerProps> = ({
 										type="text"
 										value={selectedColor}
 										onChange={(e) => setSelectedColor(e.target.value)}
-										className="w-full mt-1 px-3 py-2 border rounded-lg text-sm font-mono"
+										className="w-full mt-1 px-3 py-2 border rounded-lg text-sm font-mono focus:border-[var(--color-primary)] outline-none"
 									/>
 								</div>
 							</div>
@@ -164,8 +164,8 @@ const BackgroundPicker: React.FC<BackgroundPickerProps> = ({
 											key={color}
 											onClick={() => setSelectedColor(color)}
 											className={`w-full aspect-square rounded-lg border-2 transition-all ${selectedColor === color
-													? "border-purple-500 scale-110"
-													: "border-gray-200 hover:border-gray-400"
+												? "border-[var(--color-primary)] scale-110"
+												: "border-gray-200 hover:border-gray-400"
 												}`}
 											style={{ backgroundColor: color }}
 										/>
@@ -176,7 +176,7 @@ const BackgroundPicker: React.FC<BackgroundPickerProps> = ({
 							{/* Apply Button */}
 							<button
 								onClick={handleColorApply}
-								className="w-full py-3 bg-purple-600 text-white rounded-lg font-medium hover:bg-purple-700 transition-colors"
+								className="w-full py-3 bg-[var(--color-primary)] text-white rounded-lg font-medium hover:brightness-90 transition-all"
 							>
 								Terapkan Warna
 							</button>
@@ -195,7 +195,7 @@ const BackgroundPicker: React.FC<BackgroundPickerProps> = ({
 							/>
 							<div
 								onClick={() => fileInputRef.current?.click()}
-								className="border-2 border-dashed border-gray-300 rounded-2xl p-8 hover:border-purple-500 hover:bg-purple-50 transition-all cursor-pointer"
+								className="border-2 border-dashed border-gray-300 rounded-2xl p-8 hover:border-[var(--color-primary)] hover:bg-[var(--color-primary)]/5 transition-all cursor-pointer"
 							>
 								<Upload size={48} className="mx-auto text-gray-400 mb-4" />
 								<p className="text-gray-600 font-medium">Klik untuk upload gambar</p>

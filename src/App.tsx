@@ -9,42 +9,14 @@ import CreativeLayoutsPage from "./components/pages/CreativeLayoutsPage";
 import ClassicPolaroidPage from "./components/pages/ClassicPolaroidPage";
 import PhotoPrintsPage from "./components/pages/PhotoPrintsPage";
 import StripLayoutPage from "./components/pages/StripLayoutPage";
-// import { usePwaPrompt } from "./hooks/usePwaPrompt";
-// import PwaInstallButton from "./components/PwaInstallButton";
-function App() {
-  // pakai hook
-  // const { installPrompt, installed, triggerInstall } = usePwaPrompt();
+import { BackgroundProvider } from "./context/BackgroundContext";
 
+function App() {
   return (
-    <>
+    <BackgroundProvider>
       <Header>
         <Nav />
-        {/* <PwaInstallButton /> */}
       </Header>
-
-      {/* Tombol Install PWA
-      {!installed && installPrompt && (
-        <div style={{ padding: "10px", textAlign: "center" }}>
-          <button
-            onClick={triggerInstall}
-            style={{
-              padding: "8px 16px",
-              backgroundColor: "#020618",
-              color: "white",
-              border: "none",
-              borderRadius: "8px",
-              cursor: "pointer",
-            }}
-          >
-            Install Aplikasi
-          </button>
-        </div>
-      )}
-      {installed && (
-        <p style={{ textAlign: "center", color: "green" }}>
-          Aplikasi sudah terinstal 🎉
-        </p>
-      )} */}
 
       <Routes>
         <Route path="/" element={<Beranda />} />
@@ -54,10 +26,8 @@ function App() {
         <Route path="/photo-prints/:type" element={<PhotoPrintsPage />} />
         <Route path="/strip-layout/:type" element={<StripLayoutPage />} />
       </Routes>
-    </>
+    </BackgroundProvider>
   );
 }
 
 export default App;
-
-
