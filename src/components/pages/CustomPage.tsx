@@ -35,13 +35,13 @@ const CustomPage = () => {
 			containerClass: "flex gap-2 flex-col", // default container
 		};
 
-		if (item.includes("3Strip")) {
+		if (item.includes("3strip")) {
 			props = { count: 3, aspect: "aspect-[1/1]", containerClass: "flex gap-2 flex-col" };
-		} else if (item.includes("4 Strip")) {
+		} else if (item.includes("4strip")) {
 			props = { count: 4, aspect: "aspect-[1/1]", containerClass: "flex gap-2 flex-col" };
-		} else if (item.includes("Snapshoot 6")) {
+		} else if (item.includes("Snapshoot6")) {
 			props = { count: 6, aspect: "aspect-[1/1]", containerClass: "grid grid-cols-2 gap-2" };
-		} else if (item.includes("Snapshoot 8")) {
+		} else if (item.includes("Snapshoot8")) {
 			props = { count: 8, aspect: "aspect-[1/1]", containerClass: "grid grid-cols-2 gap-2" };
 			// 👆 grid-cols-2 sesuai permintaan
 		} else if (item.toLowerCase().includes("classic")) {
