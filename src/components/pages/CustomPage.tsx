@@ -4,6 +4,8 @@ import TitleForPage from "../TItleForPage";
 import CardPolaroweb from "../ui/CardPolaroweb";
 import { useState, useEffect } from "react";
 import { dataPolaroid } from "@/lib/data.d";
+import SEO from "../SEO";
+import { getSEOByCategory } from "../../lib/seo.data";
 
 const CustomPage = () => {
 	const { category } = useParams<{ category: string }>();
@@ -51,33 +53,41 @@ const CustomPage = () => {
 		return props;
 	};
 
-
+	const seo = getSEOByCategory(category || '');
 
 	return (
-		<main className="p-4 md:mt-15">
-			<TitleForPage {...{ category, header, subHeader }} />
-			<h3 className="text-sm px-5 md:p-0 mb-8  md:text-lg font-medium text-[var(--color-primary)] text-center max-w-3xl mx-auto ">
-				{description}
-			</h3>
-			<div className="gap-10 justify-center flex flex-wrap items-start">
-				{subHeader.map((item, index) => {
-					const { count, aspect, containerClass } = getLayoutProps(item);
-					return (
-						<CardPolaroweb key={index} judul={item}>
-							<div className={containerClass}>
-								{Array.from({ length: count }).map((_, i) => (
-									<div
-										key={i}
-										className={`w-full ${aspect} bg-slate-300 overflow-hidden`}
-									></div>
-								))}
-							</div>
+		<>
+			<SEO
+				title={seo.title}
+				description={seo.description}
+				keywords={seo.keywords}
+				canonicalUrl={seo.canonicalPath}
+			/>
+			<main className="p-4 md:mt-15">
+				<TitleForPage {...{ category, header, subHeader }} />
+				<h3 className="text-sm px-5 md:p-0 mb-8  md:text-lg font-medium text-[var(--color-primary)] text-center max-w-3xl mx-auto ">
+					{description}
+				</h3>
+				<div className="gap-10 justify-center flex flex-wrap items-start">
+					{subHeader.map((item, index) => {
+						const { count, aspect, containerClass } = getLayoutProps(item);
+						return (
+							<CardPolaroweb key={index} judul={item}>
+								<div className={containerClass}>
+									{Array.from({ length: count }).map((_, i) => (
+										<div
+											key={i}
+											className={`w-full ${aspect} bg-slate-300 overflow-hidden`}
+										></div>
+									))}
+								</div>
 
-						</CardPolaroweb>
-					);
-				})}
-			</div>
-		</main>
+							</CardPolaroweb>
+						);
+					})}
+				</div>
+			</main>
+		</>
 	);
 };
 

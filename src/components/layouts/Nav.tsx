@@ -4,13 +4,13 @@ import ListNav from "./ListNav";
 
 const Nav = () => {
   return (
-    <nav >
+    <nav className="transition-all" >
       <ul className="
-        flex flex-col md:flex-row md:w-full text-lg text-left w-[200px] md:gap-16 transition-all relative   /* mobile & tablet column, desktop row */
+        flex flex-col md:flex-row md:w-full text-lg text-left w-[200px] md:gap-16 transition-all relative   
         lg:gap-20
         font-normal md:text-sm text-[var(--color-light)]
         items-start lg:items-center
-        py-4 md:py-2
+        py-4 md:py-2 
       ">
         <Link to={"/classic-polaroid"}><ListNav menu="Classic Polaroid" /></Link>
         <Link to={"/strip-layout"}> <ListNav menu="Strip Layout" /></Link>

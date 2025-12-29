@@ -24,13 +24,13 @@ const Header = ({ children }: NavPropsType) => {
 	const [open, setOpen] = useState(false);
 
 	return (
-		<header className="bg-[var(--color-primary)] md:bg-transparent flex items-center justify-between rounded-full fixed top-2 mx-auto md:w-full  z-50 md:px-4 right-2  ">
+		<header className="bg-[var(--color-primary)] md:bg-transparent flex items-center justify-between rounded-full fixed top-2 mx-auto md:w-full  z-50 md:px-4 right-2 transition-all transation-duration-300">
 			{/* Logo / Brand */}
 			{/* <div className="text-white font-bold  py-3 md:hidden">PolaroWeb</div> */}
 
 			{/* Tombol hamburger untuk tablet & mobile */}
 			<button
-				className="md:hidden text-white p-2"
+				className="md:hidden text-white p-2 transition-all duration-300"
 				onClick={() => setOpen(!open)}
 			>
 				{open ? <X /> : <Menu />}
