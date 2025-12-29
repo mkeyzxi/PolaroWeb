@@ -19,6 +19,7 @@ function App() {
       </Header>
 
       <Routes>
+        <Route path="" element={<Beranda />} />
         <Route path="/" element={<Beranda />} />
         <Route path="/:category" element={<CustomPage />} />
         <Route path="/creative-layouts/:type" element={<CreativeLayoutsPage />} />

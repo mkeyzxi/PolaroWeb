@@ -1,31 +1,73 @@
 <!doctype html>
-<html lang="en">
+<html lang="id">
 
 <head>
+  <!-- Basic -->
   <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PolaroWeb</title>
-  <link href="/src/style.css" rel="stylesheet">
-  <link rel="icon" href="/public/pwa-192x192.png" type="image/png" sizes="512x512">
-  <link rel="apple-touch-icon" href="/public/pwa-192x192.png" />
-  <!-- Link manifest -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+
+  <!-- Title -->
+  <title>PolaroWeb | Photobooth</title>
+
+  <!-- Primary SEO -->
+  <meta name="description"
+    content="PolaroWeb adalah photobooth online untuk membuat polaroid digital estetik. Pilih Classic Polaroid, Strip Layout, Photo Prints, hingga Creative Layout untuk abadikan momen berharga." />
+  <meta name="keywords"
+    content="polaroid digital, photobooth online, polaroid aesthetic, camera web, foto polaroid, strip photo, photo prints" />
+  <meta name="author" content="PolaroWeb" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph (Facebook, WhatsApp, LinkedIn) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="PolaroWeb – Create Digital Polaroids" />
+  <meta property="og:description"
+    content="Buat polaroid digital unik langsung dari browser. Classic, Strip, Photo Prints, dan Creative Layout dalam satu photobooth online." />
+  <meta property="og:url" content="https://polaroweb.app/" />
+  <meta property="og:site_name" content="PolaroWeb" />
+  <meta property="og:image" content="/image/polaroid-lima.avif" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Contoh hasil polaroid digital dari PolaroWeb" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="PolaroWeb – Create Digital Polaroids" />
+  <meta name="twitter:description"
+    content="Photobooth online untuk membuat polaroid digital estetik dengan berbagai layout kreatif." />
+  <meta name="twitter:image" content="/image/polaroid-lima.avif" />
+
+  <!-- PWA & Icons -->
   <link rel="manifest" href="/manifest.webmanifest" />
-  <!-- Warna status bar (Android) -->
   <meta name="theme-color" content="#020618" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="PolaroWeb" />
+
+  <!-- Icons -->
+  <link rel="icon" href="/pwa-192x192.png" sizes="192x192" />
+  <link rel="apple-touch-icon" href="/pwa-192x192.png" />
+
+  <!-- Styles -->
+  <link href="/src/style.css" rel="stylesheet" />
+
+  <!-- Performance Hint -->
+  <link rel="preload" as="image" href="/image/polaroid-lima.avif" />
 </head>
 
 <body>
   <div id="root"></div>
+
+  <!-- App -->
   <script type="module" src="/src/main.tsx"></script>
-  <!-- Register Service Worker -->
+
+  <!-- Service Worker -->
   <script>
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", () => {
         navigator.serviceWorker
           .register("/sw.js")
           .then(() => console.log("Service Worker registered"))
-          .catch((err) => console.log("Service Worker failed", err));
+          .catch(err => console.log("Service Worker failed", err));
       });
     }
   </script>
