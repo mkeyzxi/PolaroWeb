@@ -1,7 +1,7 @@
 
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
-import Beranda from "./components/layouts/HeroSection";
+
 import Header from "./components/layouts/Header";
 import Nav from "./components/layouts/Nav";
 import CustomPage from "./components/pages/CustomPage";
@@ -10,6 +10,7 @@ import ClassicPolaroidPage from "./components/pages/ClassicPolaroidPage";
 import PhotoPrintsPage from "./components/pages/PhotoPrintsPage";
 import StripLayoutPage from "./components/pages/StripLayoutPage";
 import { BackgroundProvider } from "./context/BackgroundContext";
+import Beranda from "./components/pages/Beranda";
 
 function App() {
   return (
