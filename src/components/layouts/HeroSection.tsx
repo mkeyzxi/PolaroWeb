@@ -42,7 +42,7 @@ const Beranda = () => {
 
 				{/* Konten */}
 
-				<div className="relative z-10 grid gap-8 px-4 py-16 md:grid-cols-2 md:px-12 lg:px-24 lg:py-24 md:h-[100vh] justify-between items-center ">
+				<div className="relative z-10 grid gap-8 px-4 py-16 md:grid-cols-2 md:px-12 lg:px-24 lg:py-24 h-[100vh] justify-between items-center ">
 					{/* Kolom Kiri */}
 
 					<div className="flex flex-col gap-y-2 order-last md:order-first">
