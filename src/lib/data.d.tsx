@@ -25,7 +25,7 @@ export const dataPolaroid: Record<string, PolaroidCategory> = {
     header: "Photo Prints",
     description:
       "Cetakan foto standar berkualitas tinggi yang fleksibel untuk berbagai keperluan, dari bingkai hingga album.",
-    items: ["2R", "3R", "4R"],
+    items: ["2r", "3r", "4r"],
     link: ["/photo-prints/2r", "/photo-prints/3r", "/photo-prints/4r"]
   },
   "creative-layouts": {
