@@ -43,7 +43,7 @@ const Beranda = () => {
 
 				{/* Konten */}
 
-				<div className="relative z-10 grid gap-8 px-4 py-16 md:grid-cols-2 md:px-12 lg:px-24 lg:py-24 justify-between items-center ">
+				<div className="relative z-10 grid gap-6 px-4 pt-20 pb-8 md:gap-8 md:grid-cols-2 md:px-12 md:pt-16 md:pb-16 lg:px-24 lg:py-24 justify-between items-center ">
 					{/* Kolom Kiri */}
 
 					<div className="flex flex-col gap-y-2 order-last md:order-first">
@@ -84,13 +84,13 @@ const Beranda = () => {
 							</div>
 
 							<div className="w-full">
-  <Link 
-    to="/creative-layouts" 
-    className="flex w-full justify-center items-center cursor-pointer rounded-xl border border-dotted border-[var(--color-secondary)] px-6 py-3 text-[var(--color-accent)] font-extrabold uppercase"
-  >
-    Creative Layout
-  </Link>
-</div>
+								<Link
+									to="/creative-layouts"
+									className="flex w-full justify-center items-center cursor-pointer rounded-xl border border-dotted border-[var(--color-secondary)] px-6 py-3 text-[var(--color-accent)] font-extrabold uppercase"
+								>
+									Creative Layout
+								</Link>
+							</div>
 						</div>
 					</div>
 
@@ -116,8 +116,8 @@ const Beranda = () => {
 									sendToBackOnClick={false}
 									// ubah width height lebih responsif
 									cardDimensions={{
-										width: typeof window !== 'undefined' && window.innerWidth < 640 ? 200 : 300,
-										height: typeof window !== 'undefined' && window.innerWidth < 640 ? 300 : 400,
+										width: typeof window !== 'undefined' && window.innerWidth < 640 ? 160 : 300,
+										height: typeof window !== 'undefined' && window.innerWidth < 640 ? 240 : 400,
 									}}
 									cardsData={images}
 								/>

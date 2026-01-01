@@ -44,10 +44,7 @@ const Header = ({ children }: NavPropsType) => {
 
 	return (
 		<header
-			className={`fixed top-0 left-0 right-0 z-50  transition-all duration-300 ${scrolled
-				? "bg-[var(--color-primary)]/95 backdrop-blur-md shadow-lg"
-				: "bg-transparent "
-				}`}
+			className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-[var(--color-primary)]/95 backdrop-blur-md shadow-lg md:bg-transparent md:backdrop-blur-none md:shadow-none"
 		>
 			<div className="max-w-7xl mx-auto px-4 sm:px-2">
 				<div className="flex items-center justify-between h-16 md:h-20">

@@ -11,6 +11,7 @@ import PhotoPrintsPage from "./components/pages/PhotoPrintsPage";
 import StripLayoutPage from "./components/pages/StripLayoutPage";
 import { BackgroundProvider } from "./context/BackgroundContext";
 import Beranda from "./components/pages/Beranda";
+import PageTransition from "./components/PageTransition";
 
 function App() {
   return (
@@ -19,15 +20,17 @@ function App() {
         <Nav />
       </Header>
 
-      <Routes>
-        <Route path="" element={<Beranda />} />
-        <Route path="/" element={<Beranda />} />
-        <Route path="/:category" element={<CustomPage />} />
-        <Route path="/creative-layouts/:type" element={<CreativeLayoutsPage />} />
-        <Route path="/classic-polaroid/:type" element={<ClassicPolaroidPage />} />
-        <Route path="/photo-prints/:type" element={<PhotoPrintsPage />} />
-        <Route path="/strip-layout/:type" element={<StripLayoutPage />} />
-      </Routes>
+      <PageTransition>
+        <Routes>
+          <Route path="" element={<Beranda />} />
+          <Route path="/" element={<Beranda />} />
+          <Route path="/:category" element={<CustomPage />} />
+          <Route path="/creative-layouts/:type" element={<CreativeLayoutsPage />} />
+          <Route path="/classic-polaroid/:type" element={<ClassicPolaroidPage />} />
+          <Route path="/photo-prints/:type" element={<PhotoPrintsPage />} />
+          <Route path="/strip-layout/:type" element={<StripLayoutPage />} />
+        </Routes>
+      </PageTransition>
     </BackgroundProvider>
   );
 }

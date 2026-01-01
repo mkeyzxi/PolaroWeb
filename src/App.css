@@ -1,3 +1,17 @@
 body {
-	  background-color: var(--color-light);
+	background-color: var(--color-light);
+}
+
+/* Page Transition Animations - Only opacity, no transform to preserve fixed positioning */
+.page-transition-container {
+	transition: opacity 0.3s ease-out;
+	will-change: opacity;
+}
+
+.page-enter {
+	opacity: 1;
+}
+
+.page-exit {
+	opacity: 0;
 }

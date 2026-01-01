@@ -242,7 +242,7 @@ const ClassicPolaroid: React.FC = () => {
           </div>
         </div>
 
-        <div className="md:hidden  fixed bottom-0 left-0 right-0 z-30 pb-safe transition-all duration-75">
+        <div className="md:hidden fixed bottom-0 left-0 right-0 z-30 pb-safe transition-all duration-75">
           <div
             className="mx-4 mb-4 flex justify-between items-center gap-3
     bg-surface-dark/90 bg-transparent
