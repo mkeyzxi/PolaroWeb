@@ -6,6 +6,7 @@ import AnimatedContent from '../AnimatedContent';
 import FadeContent from '../FadeContent';
 import SEO from '../SEO';
 import { seoData } from '../../lib/seo.data';
+import { Link } from 'react-router-dom';
 
 const Beranda = () => {
 	const images = [
@@ -24,7 +25,7 @@ const Beranda = () => {
 				keywords={seoData.home.keywords}
 				canonicalUrl={seoData.home.canonicalPath}
 			/>
-			<div className="relative w-full z-1 overflow-hidden bg-[#020618] ">
+			<div className="relative w-full z-1 overflow-hidden bg-[#020618] h-screen flex items-center ">
 				{/* Background */}
 				<div className="absolute inset-0 z-0 ">
 					<DotGrid
@@ -42,7 +43,7 @@ const Beranda = () => {
 
 				{/* Konten */}
 
-				<div className="relative z-10 grid gap-8 px-4 py-16 md:grid-cols-2 md:px-12 lg:px-24 lg:py-24 h-[100vh] justify-between items-center ">
+				<div className="relative z-10 grid gap-8 px-4 py-16 md:grid-cols-2 md:px-12 lg:px-24 lg:py-24 justify-between items-center ">
 					{/* Kolom Kiri */}
 
 					<div className="flex flex-col gap-y-2 order-last md:order-first">
@@ -71,22 +72,25 @@ const Beranda = () => {
 							<TargetCursor spinDuration={2} hideDefaultCursor={true} />
 
 							<div className="grid grid-cols-1 gap-3 sm:grid-cols-3 text-sm ">
-								<button className="cursor-target rounded-xl border border-dotted border-[var(--color-secondary)] px-6 py-3 text-[var(--color-accent)] font-extrabold uppercase text-center">
+								<Link to="/classic-polaroid" className="cursor-target rounded-xl border border-dotted border-[var(--color-secondary)] px-6 py-3 text-[var(--color-accent)] font-extrabold uppercase text-center">
 									Classic Polaroid
-								</button>
-								<button className="cursor-target rounded-xl border border-dotted border-[var(--color-secondary)] px-6 py-3 text-[var(--color-accent)] font-extrabold uppercase text-center">
+								</Link >
+								<Link to="/strip-layout" className="cursor-target rounded-xl border border-dotted border-[var(--color-secondary)] px-6 py-3 text-[var(--color-accent)] font-extrabold uppercase text-center">
 									Strip Layout
-								</button>
-								<button className="cursor-target rounded-xl border border-dotted border-[var(--color-secondary)] px-6 py-3 text-[var(--color-accent)] font-extrabold uppercase text-center">
+								</Link >
+								<Link to="/photo-prints" className="cursor-target rounded-xl border border-dotted border-[var(--color-secondary)] px-6 py-3 text-[var(--color-accent)] font-extrabold uppercase text-center">
 									Photo Prints
-								</button>
+								</Link >
 							</div>
 
-							<div className="flex justify-center">
-								<button className="text-sm cursor-target w-full rounded-xl border border-dotted border-[var(--color-secondary)] px-6 py-3 text-[var(--color-accent)] font-extrabold uppercase">
-									Creative Layout
-								</button>
-							</div>
+							<div className="w-full">
+  <Link 
+    to="/creative-layouts" 
+    className="flex w-full justify-center items-center cursor-pointer rounded-xl border border-dotted border-[var(--color-secondary)] px-6 py-3 text-[var(--color-accent)] font-extrabold uppercase"
+  >
+    Creative Layout
+  </Link>
+</div>
 						</div>
 					</div>
 
