@@ -222,7 +222,7 @@ const PhotoPrintsPage: React.FC = () => {
         <TitleForPage header="Photo Prints" category="photo-prints" subHeader={allowedLayouts} />
         <p className="mb-4">
           <strong>{layout.toUpperCase()}</strong> |{' '}
-          <span className="text-[var(--color-accent)] font-bold">Ambil {maxPhotos} foto</span>
+          <span className="text-[var(--color-accent)] font-bold">Take {maxPhotos} photos</span>
         </p>
 
         <div className="flex flex-wrap gap-10 justify-center items-start">
@@ -310,7 +310,7 @@ backdrop-blur-sm md:backdrop-blur-none bg-transparent"
             onClick={() => setIsPickerOpen(true)}
           >
             <Palette />
-            <span className="hidden lg:block">Pilih Background</span>
+            <span className="hidden lg:block">Choose Background</span>
           </button>
 
           {!stream ? (
@@ -321,7 +321,7 @@ backdrop-blur-sm md:backdrop-blur-none bg-transparent"
               }}
             >
               <CameraOff />
-              <span className="hidden lg:block">Buka Kamera</span>
+              <span className="hidden lg:block">Open Camera</span>
             </button>
           ) : (
             <button
@@ -330,7 +330,7 @@ backdrop-blur-sm md:backdrop-blur-none bg-transparent"
               disabled={!stream}
             >
               <Camera />
-              <span className="hidden lg:block">Ambil Gambar</span>
+              <span className="hidden lg:block">Take Photo</span>
             </button>
           )}
 

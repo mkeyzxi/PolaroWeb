@@ -14,10 +14,10 @@ export default function Designed() {
       {/* HEADER */}
       <section className="mb-8 text-center">
         <h2 className="text-2xl font-bold text-[var(--color-primary)]">
-          Dirancang untuk Semua Cerita
+          Designed for Every Story
         </h2>
         <p className="text-sm text-[var(--color-secondary)]">
-          Pilih jenis momen, lalu biarkan visual berbicara.
+          Choose your moment type, then let the visuals speak.
         </p>
       </section>
 
@@ -38,8 +38,8 @@ export default function Designed() {
               <PartyPopper />
             </IconBox>
             <TextBlock
-              title="Acara & Event"
-              desc="Rame, spontan, penuh cerita"
+              title="Events & Parties"
+              desc="Lively, spontaneous, full of stories"
             />
           </div>
         </article>
@@ -53,7 +53,7 @@ export default function Designed() {
 
         {/* GRADUATION */}
         <SmallCard
-          title="Wisuda"
+          title="Graduation"
           icon={<GraduationCap />}
           className="bg-purple-100 text-purple-700"
         />
@@ -71,19 +71,19 @@ export default function Designed() {
 
           <TextBlock
             title="Fandom"
-            desc="Komunitas & idola"
+            desc="Community & idols"
           />
         </article>
 
-        {/* UMKM */}
+        {/* BUSINESS */}
         <article className="shadow-sm col-span-2 rounded-[var(--radius)]
           bg-white border border-[var(--color-light)]
           p-6 transition-all hover:-translate-y-1 hover:shadow-md">
 
           <div className="flex justify-between items-center">
             <TextBlock
-              title="Bisnis & UMKM"
-              desc="Produk tampil lebih hidup"
+              title="Business & SMEs"
+              desc="Products come to life"
             />
             <IconCircle className="bg-emerald-100 text-emerald-700">
               <Store />
@@ -129,7 +129,7 @@ export default function Designed() {
 
             <TextBlock
               title="Travel & Lifestyle"
-              desc="Perjalanan yang ingin dikenang lebih lama"
+              desc="Journeys worth remembering longer"
               large
             />
           </div>
@@ -139,9 +139,9 @@ export default function Designed() {
       {/* FOOTER */}
       <footer className="mt-10 text-center">
         <p className="text-sm text-[var(--color-secondary)]">
-          Photobooth digital yang{" "}
+          A digital photobooth that's{" "}
           <span className="font-bold text-[var(--color-accent)]">
-            ringan, cepat, dan manusiawi
+            lightweight, fast, and human
           </span>
           .
         </p>
@@ -199,9 +199,8 @@ function TextBlock({
   return (
     <div className="flex flex-col">
       <h3
-        className={`font-bold text-[var(--color-primary)] ${
-          large ? "text-lg" : "text-base"
-        }`}
+        className={`font-bold text-[var(--color-primary)] ${large ? "text-lg" : "text-base"
+          }`}
       >
         {title}
       </h3>

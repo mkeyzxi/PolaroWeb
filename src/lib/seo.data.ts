@@ -1,5 +1,5 @@
 // src/lib/seo.data.ts
-// SEO configuration untuk setiap halaman dengan keywords trending Indonesia
+// SEO configuration for each page with global trending keywords
 
 export interface SEOData {
 	title: string;
@@ -10,53 +10,53 @@ export interface SEOData {
 
 export const seoData: Record<string, SEOData> = {
 	home: {
-		title: 'PolaroWeb - Photobooth Online Gratis | Korean Photobox & Polaroid Digital',
+		title: 'PolaroWeb - Free Online Photobooth | Korean Photobox & Digital Polaroid',
 		description:
-			'Buat foto polaroid digital estetik secara online. Photobooth gratis untuk pernikahan, wisuda, event, dan self studio. Gaya korean photobox terkini 2025!',
+			'Create aesthetic digital polaroid photos online. Free photobooth for weddings, graduations, events, and self studio. Trending Korean photobox style 2025!',
 		keywords:
-			'photobooth online, photobooth gratis, korean photobox, self studio, polaroid digital, photobooth pernikahan, photobooth wisuda, photobooth event, self photo studio, AI polaroid viral 2025',
+			'online photobooth, free photobooth, korean photobox, self studio, digital polaroid, wedding photobooth, graduation photobooth, event photobooth, self photo studio, AI polaroid viral 2025',
 		canonicalPath: '/',
 	},
 	'classic-polaroid': {
-		title: 'Classic Polaroid - Foto Polaroid Digital Vintage Aesthetic | PolaroWeb',
+		title: 'Classic Polaroid - Vintage Aesthetic Digital Polaroid Photos | PolaroWeb',
 		description:
-			'Buat foto polaroid classic dengan nuansa vintage aesthetic. Pilih format Square, Wide, atau Mini untuk mengabadikan momen berharga ala polaroid jadul yang estetik.',
+			'Create classic polaroid photos with vintage aesthetic vibes. Choose Square, Wide, or Mini format to capture precious moments in beautiful retro polaroid style.',
 		keywords:
-			'polaroid vintage, foto polaroid, polaroid digital, classic polaroid, polaroid aesthetic, AI polaroid, foto jadul, polaroid online, polaroid gratis',
+			'vintage polaroid, polaroid photo, digital polaroid, classic polaroid, aesthetic polaroid, AI polaroid, retro photo, online polaroid, free polaroid',
 		canonicalPath: '/classic-polaroid',
 	},
 	'strip-layout': {
-		title: 'Strip Layout - Photo Strip Photobooth Korea 3 & 4 Kotak | PolaroWeb',
+		title: 'Strip Layout - Korean Style Photo Strip Photobooth 3 & 4 Frames | PolaroWeb',
 		description:
-			'Cetak foto strip 3 atau 4 kotak seperti photobooth Korea. Sempurna untuk event, party, wisuda, pernikahan atau self studio ala korean photobox viral 2025.',
+			'Print 3 or 4 frame photo strips like Korean photobooth. Perfect for events, parties, graduations, weddings or self studio in viral Korean photobox style 2025.',
 		keywords:
-			'photo strip, photobooth strip, korean photobox, photobooth event, photo strip 4 kotak, self photo studio, photobooth korea, foto strip, photobooth wisuda',
+			'photo strip, photobooth strip, korean photobox, event photobooth, photo strip 4 frames, self photo studio, korea photobooth, strip photo, graduation photobooth',
 		canonicalPath: '/strip-layout',
 	},
 	'photo-prints': {
-		title: 'Photo Prints - Cetak Foto Digital 2R 3R 4R Online | PolaroWeb',
+		title: 'Photo Prints - Digital Photo Print 2R 3R 4R Online | PolaroWeb',
 		description:
-			'Cetak foto ukuran standar 2R, 3R, 4R secara online gratis. Kualitas tinggi untuk bingkai, album, atau kenang-kenangan event pernikahan dan wisuda.',
-		keywords: 'cetak foto online, photo prints, foto 2R, foto 3R, foto 4R, cetak foto digital, cetak foto gratis, print foto online',
+			'Print standard size photos 2R, 3R, 4R online for free. High quality for frames, albums, or keepsakes for weddings and graduation events.',
+		keywords: 'online photo print, photo prints, 2R photo, 3R photo, 4R photo, digital photo print, free photo print, print photo online',
 		canonicalPath: '/photo-prints',
 	},
 	'creative-layouts': {
-		title: 'Creative Layouts - Photobooth Grid Layout Kreatif 6 & 8 Kotak | PolaroWeb',
+		title: 'Creative Layouts - Creative Grid Layout Photobooth 6 & 8 Frames | PolaroWeb',
 		description:
-			'Eksplorasi layout foto kreatif dengan Snapshoot 6 dan 8 grid. Photobooth online dengan desain inovatif untuk tampil beda di social media.',
+			'Explore creative photo layouts with Snapshoot 6 and 8 grid. Online photobooth with innovative designs to stand out on social media.',
 		keywords:
-			'creative layout, photobooth grid, foto grid, photobooth unik, layout foto kreatif, self studio, photobooth aesthetic, snapshoot, foto collage',
+			'creative layout, photobooth grid, grid photo, unique photobooth, creative photo layout, self studio, aesthetic photobooth, snapshoot, photo collage',
 		canonicalPath: '/creative-layouts',
 	},
 };
 
-// Helper function untuk mendapatkan SEO data berdasarkan category
+// Helper function to get SEO data by category
 export const getSEOByCategory = (category: string): SEOData => {
 	return (
 		seoData[category] || {
-			title: `${category} - Photobooth Online | PolaroWeb`,
-			description: `Buat foto ${category} dengan PolaroWeb - Photobooth online gratis untuk pernikahan, wisuda, event, dan self studio.`,
-			keywords: 'photobooth online, polaroid digital, korean photobox, self studio',
+			title: `${category} - Online Photobooth | PolaroWeb`,
+			description: `Create ${category} photos with PolaroWeb - Free online photobooth for weddings, graduations, events, and self studio.`,
+			keywords: 'online photobooth, digital polaroid, korean photobox, self studio',
 			canonicalPath: `/${category}`,
 		}
 	);

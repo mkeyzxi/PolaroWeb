@@ -218,7 +218,7 @@ const ClassicPolaroid: React.FC = () => {
         keywords={seoData['classic-polaroid'].keywords}
         canonicalUrl={seoData['classic-polaroid'].canonicalPath}
       />
-      <div className="p-4 text-center md:mt-15 mb-20 md:mb-0">
+      <div className="p-4 text-center  md:mt-15 mb-20 md:mb-0">
         <TitleForPage
           header="Classic Polaroid"
           category="classic-polaroid"
@@ -226,7 +226,7 @@ const ClassicPolaroid: React.FC = () => {
         />
         <p className="mb-4">
           <strong>{layout.toUpperCase()}</strong> |{' '}
-          <span className="text-[var(--color-accent)] font-bold">Ambil {maxPhotos} foto</span>
+          <span className="text-[var(--color-accent)] font-bold">Take {maxPhotos} photos</span>
         </p>
 
         <div className="flex flex-wrap gap-10 justify-center items-start">
@@ -242,7 +242,7 @@ const ClassicPolaroid: React.FC = () => {
           </div>
         </div>
 
-        <div className="md:hidden  fixed bottom-0 left-0 right-0 z-30 pb-safe transition-all duration-75">
+        <div className="md:hidden fixed bottom-0 left-0 right-0 z-30 pb-safe transition-all duration-75">
           <div
             className="mx-4 mb-4 flex justify-between items-center gap-3
     bg-surface-dark/90 bg-transparent
@@ -314,7 +314,7 @@ backdrop-blur-sm md:backdrop-blur-none bg-transparent"
             onClick={() => setIsPickerOpen(true)}
           >
             <Palette />
-            <span className="hidden lg:block">Pilih Background</span>
+            <span className="hidden lg:block">Choose Background</span>
           </button>
 
           {!stream ? (<button
@@ -324,14 +324,14 @@ backdrop-blur-sm md:backdrop-blur-none bg-transparent"
             }}
           >
             <CameraOff />
-            <span className="hidden lg:block">Buka Kamera</span>
+            <span className="hidden lg:block">Open Camera</span>
           </button>) : (<button
             className="px-4 py-2 bg-[var(--color-secondary)] flex gap-2 text-white rounded-[2px]"
             onClick={takePhoto}
             disabled={!stream}
           >
             <Camera />
-            <span className="hidden lg:block">Ambil Gambar</span>
+            <span className="hidden lg:block">Take Photo</span>
           </button>)}
 
 
@@ -354,7 +354,7 @@ backdrop-blur-sm md:backdrop-blur-none bg-transparent"
           onSelectColor={handleSelectColor}
           currentColor={backgroundColor}
         />
-      </div>
+      </div >
     </>
   )
 }

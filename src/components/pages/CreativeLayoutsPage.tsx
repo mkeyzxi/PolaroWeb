@@ -226,7 +226,7 @@ const CreativeLayoutsPage: React.FC = () => {
         />
         <p className="mb-4">
           <strong>{layout.toUpperCase()}</strong> |{' '}
-          <span className="text-[var(--color-accent)] font-bold">Ambil {maxPhotos} foto</span>
+          <span className="text-[var(--color-accent)] font-bold">Take {maxPhotos} photos</span>
         </p>
 
         <div className="flex flex-wrap gap-10 justify-center items-start">
@@ -314,7 +314,7 @@ const CreativeLayoutsPage: React.FC = () => {
             onClick={() => setIsPickerOpen(true)}
           >
             <Palette />
-            <span className="hidden lg:block">Pilih Background</span>
+            <span className="hidden lg:block">Choose Background</span>
           </button>
 
           {!stream ? (
@@ -325,7 +325,7 @@ const CreativeLayoutsPage: React.FC = () => {
               }}
             >
               <CameraOff />
-              <span className="hidden lg:block">Buka Kamera</span>
+              <span className="hidden lg:block">Open Camera</span>
             </button>
           ) : (
             <button
@@ -334,7 +334,7 @@ const CreativeLayoutsPage: React.FC = () => {
               disabled={!stream}
             >
               <Camera />
-              <span className="hidden lg:block">Ambil Gambar</span>
+              <span className="hidden lg:block">Take Photo</span>
             </button>
           )}
 

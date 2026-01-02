@@ -1,94 +1,100 @@
-// src/components/pages/CustomPage.tsx 
-import { useParams } from "react-router-dom";
-import TitleForPage from "../TItleForPage";
-import CardPolaroweb from "../ui/CardPolaroweb";
-import { useState, useEffect } from "react";
-import { dataPolaroid } from "@/lib/data.d";
-import SEO from "../SEO";
-import { getSEOByCategory } from "../../lib/seo.data";
+// src/components/pages/CustomPage.tsx
+import {Link, useParams} from 'react-router-dom'
+import TitleForPage from '../TItleForPage'
+import CardPolaroweb from '../ui/CardPolaroweb'
+import {useState, useEffect} from 'react'
+import {dataPolaroid} from '@/lib/data.d'
+import SEO from '../SEO'
+import {getSEOByCategory} from '../../lib/seo.data'
 
 const CustomPage = () => {
-	const { category } = useParams<{ category: string }>();
+  const {category} = useParams<{category: string}>()
 
-	const [header, setHeader] = useState<string>("");
-	const [subHeader, setSubHeader] = useState<string[]>([]);
-	const [description, setDescription] = useState<string>("");
+  const [header, setHeader] = useState<string>('')
+  const [subHeader, setSubHeader] = useState<string[]>([])
+  const [description, setDescription] = useState<string>('')
+  const [link, setLink] = useState<string[]>([])
 
-	// ambil data berdasarkan kategori dari URL
-	useEffect(() => {
-		if (category && dataPolaroid[category]) {
-			const cat = dataPolaroid[category];
-			setHeader(cat.header ?? category);
-			setSubHeader(cat.items);
-			setDescription(cat.description);
-		} else {
-			setHeader("Kategori tidak ditemukan");
-			setSubHeader([]);
-			setDescription("");
-		}
-	}, [category]);
+  // ambil data berdasarkan kategori dari URL
+  useEffect(() => {
+    if (category && dataPolaroid[category]) {
+      const cat = dataPolaroid[category]
+      setHeader(cat.header ?? category)
+      setSubHeader(cat.items)
+      setDescription(cat.description)
+      setLink(cat.link)
+    } else {
+      setHeader('Kategori tidak ditemukan')
+      setSubHeader([])
+      setDescription('')
+    }
+  }, [category])
 
-	// fungsi layout props
-	const getLayoutProps = (item: string) => {
-		// default
-		let props = {
-			count: 1,
-			aspect: "aspect-[1/1]",
-			containerClass: "flex gap-2 flex-col", // default container
-		};
+  // fungsi layout props
+  const getLayoutProps = (item: string) => {
+    // default
+    let props = {
+      count: 1,
+      aspect: 'aspect-[1/1]',
+      containerClass: 'flex gap-2 flex-col', // default container
+    }
 
-		if (item.includes("3strip")) {
-			props = { count: 3, aspect: "aspect-[1/1]", containerClass: "flex gap-2 flex-col" };
-		} else if (item.includes("4strip")) {
-			props = { count: 4, aspect: "aspect-[1/1]", containerClass: "flex gap-2 flex-col" };
-		} else if (item.includes("Snapshoot6")) {
-			props = { count: 6, aspect: "aspect-[1/1]", containerClass: "grid grid-cols-2 gap-2" };
-		} else if (item.includes("Snapshoot8")) {
-			props = { count: 8, aspect: "aspect-[1/1]", containerClass: "grid grid-cols-2 gap-2" };
-			// 👆 grid-cols-2 sesuai permintaan
-		} else if (item.toLowerCase().includes("classic")) {
-			props = { count: 1, aspect: "aspect-[1/1]", containerClass: "flex gap-2 flex-col" };
-		}
+    if (item.includes('3strip')) {
+      props = {count: 3, aspect: 'aspect-[1/1]', containerClass: 'flex gap-2 flex-col'}
+    } else if (item.includes('4strip')) {
+      props = {count: 4, aspect: 'aspect-[1/1]', containerClass: 'flex gap-2 flex-col'}
+    } else if (item.includes('Snapshoot6')) {
+      props = {count: 6, aspect: 'aspect-[1/1]', containerClass: 'grid grid-cols-2 gap-2'}
+    } else if (item.includes('Snapshoot8')) {
+      props = {count: 8, aspect: 'aspect-[1/1]', containerClass: 'grid grid-cols-2 gap-2'}
+      //  grid-cols-2 sesuai permintaan
+    } else if (item.toLowerCase().includes('classic')) {
+      props = {count: 1, aspect: 'aspect-[1/1]', containerClass: 'flex gap-2 flex-col'}
+    }
 
-		return props;
-	};
+    return props
+  }
 
-	const seo = getSEOByCategory(category || '');
+  const seo = getSEOByCategory(category || '')
 
-	return (
-		<>
-			<SEO
-				title={seo.title}
-				description={seo.description}
-				keywords={seo.keywords}
-				canonicalUrl={seo.canonicalPath}
-			/>
-			<main className="p-4 md:mt-15">
-				<TitleForPage {...{ category, header, subHeader }} />
-				<h3 className="text-sm px-5 md:p-0 mb-8  md:text-lg font-medium text-[var(--color-primary)] text-center max-w-3xl mx-auto ">
-					{description}
-				</h3>
-				<div className="gap-10 justify-center flex flex-wrap items-start">
-					{subHeader.map((item, index) => {
-						const { count, aspect, containerClass } = getLayoutProps(item);
-						return (
-							<CardPolaroweb key={index} judul={item}>
-								<div className={containerClass}>
-									{Array.from({ length: count }).map((_, i) => (
-										<div
-											key={i}
-											className={`w-full ${aspect} bg-slate-300 overflow-hidden`}
-										></div>
-									))}
-								</div>
+  return (
+    <>
+      <SEO
+        title={seo.title}
+        description={seo.description}
+        keywords={seo.keywords}
+        canonicalUrl={seo.canonicalPath}
+      />
+      <main className="p-4 md:mt-15">
+        <TitleForPage {...{category, header, subHeader}} />
+        <h3 className="text-sm px-5 md:p-0 mb-8  md:text-lg font-medium text-[var(--color-primary)] text-center max-w-3xl mx-auto ">
+          {description}
+        </h3>
+        <div className="gap-10 justify-center flex flex-wrap items-start">
+          {subHeader.map((item, index) => {
+            const {count, aspect, containerClass} = getLayoutProps(item)
 
-							</CardPolaroweb>
-						);
-					})}
-				</div>
-			</main>
-		</>
-	);
-};
+            // {{ console.log(item, link[index]) }}
 
-export default CustomPage;
+            return (
+              <Link to={link[index]} key={index} style={{textDecoration: 'none'}}>
+                <CardPolaroweb key={index} judul={item}>
+                  <div className={containerClass}>
+                    {Array.from({length: count}).map((_, i) => (
+                      <div
+                        key={i}
+                        className={`w-full ${aspect} bg-slate-300 overflow-hidden`}
+                      ></div>
+                    ))}
+                  </div>
+                </CardPolaroweb>
+              </Link>
+            )
+          })}
+        </div>
+      </main>
+    </>
+  )
+}
+
+export default CustomPage

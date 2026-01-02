@@ -6,6 +6,7 @@ import AnimatedContent from '../AnimatedContent';
 import FadeContent from '../FadeContent';
 import SEO from '../SEO';
 import { seoData } from '../../lib/seo.data';
+import { Link } from 'react-router-dom';
 
 const Beranda = () => {
 	const images = [
@@ -24,7 +25,7 @@ const Beranda = () => {
 				keywords={seoData.home.keywords}
 				canonicalUrl={seoData.home.canonicalPath}
 			/>
-			<div className="relative w-full z-1 overflow-hidden bg-[#020618] ">
+			<div className="relative w-full z-1 overflow-hidden bg-[#020618] h-screen flex items-center ">
 				{/* Background */}
 				<div className="absolute inset-0 z-0 ">
 					<DotGrid
@@ -42,7 +43,7 @@ const Beranda = () => {
 
 				{/* Konten */}
 
-				<div className="relative z-10 grid gap-8 px-4 py-16 md:grid-cols-2 md:px-12 lg:px-24 lg:py-24 h-[100vh] justify-between items-center ">
+				<div className="relative z-10 grid gap-6 px-4 pt-20 pb-8 md:gap-8 md:grid-cols-2 md:px-12 md:pt-16 md:pb-16 lg:px-24 lg:py-24 justify-between items-center ">
 					{/* Kolom Kiri */}
 
 					<div className="flex flex-col gap-y-2 order-last md:order-first">
@@ -61,7 +62,7 @@ const Beranda = () => {
 						/>
 						<FadeContent blur={true} duration={1000} easing="ease-out" initialOpacity={0}>
 							<p className="mt-4 text-sm text-[var(--color-light)] md:text-base lg:text-lg">
-								Dengan Polaroweb, Anda bebas mendokumentasikan momen berharga menggunakan berbagai gaya polaroid yang unik dan kreatif.
+								With Polaroweb, you're free to document precious moments using a variety of unique and creative polaroid styles.
 							</p>
 						</FadeContent>
 
@@ -71,21 +72,24 @@ const Beranda = () => {
 							<TargetCursor spinDuration={2} hideDefaultCursor={true} />
 
 							<div className="grid grid-cols-1 gap-3 sm:grid-cols-3 text-sm ">
-								<button className="cursor-target rounded-xl border border-dotted border-[var(--color-secondary)] px-6 py-3 text-[var(--color-accent)] font-extrabold uppercase text-center">
+								<Link to="/classic-polaroid" className="cursor-target rounded-xl border border-dotted border-[var(--color-secondary)] px-6 py-3 text-[var(--color-accent)] font-extrabold uppercase text-center">
 									Classic Polaroid
-								</button>
-								<button className="cursor-target rounded-xl border border-dotted border-[var(--color-secondary)] px-6 py-3 text-[var(--color-accent)] font-extrabold uppercase text-center">
+								</Link >
+								<Link to="/strip-layout" className="cursor-target rounded-xl border border-dotted border-[var(--color-secondary)] px-6 py-3 text-[var(--color-accent)] font-extrabold uppercase text-center">
 									Strip Layout
-								</button>
-								<button className="cursor-target rounded-xl border border-dotted border-[var(--color-secondary)] px-6 py-3 text-[var(--color-accent)] font-extrabold uppercase text-center">
+								</Link >
+								<Link to="/photo-prints" className="cursor-target rounded-xl border border-dotted border-[var(--color-secondary)] px-6 py-3 text-[var(--color-accent)] font-extrabold uppercase text-center">
 									Photo Prints
-								</button>
+								</Link >
 							</div>
 
-							<div className="flex justify-center">
-								<button className="text-sm cursor-target w-full rounded-xl border border-dotted border-[var(--color-secondary)] px-6 py-3 text-[var(--color-accent)] font-extrabold uppercase">
+							<div className="w-full">
+								<Link
+									to="/creative-layouts"
+									className="flex w-full justify-center items-center cursor-pointer rounded-xl border border-dotted border-[var(--color-secondary)] px-6 py-3 text-[var(--color-accent)] font-extrabold uppercase"
+								>
 									Creative Layout
-								</button>
+								</Link>
 							</div>
 						</div>
 					</div>
@@ -112,8 +116,8 @@ const Beranda = () => {
 									sendToBackOnClick={false}
 									// ubah width height lebih responsif
 									cardDimensions={{
-										width: typeof window !== 'undefined' && window.innerWidth < 640 ? 200 : 300,
-										height: typeof window !== 'undefined' && window.innerWidth < 640 ? 300 : 400,
+										width: typeof window !== 'undefined' && window.innerWidth < 640 ? 160 : 300,
+										height: typeof window !== 'undefined' && window.innerWidth < 640 ? 240 : 400,
 									}}
 									cardsData={images}
 								/>
