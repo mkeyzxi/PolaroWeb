@@ -62,7 +62,7 @@ const Beranda = () => {
 						/>
 						<FadeContent blur={true} duration={1000} easing="ease-out" initialOpacity={0}>
 							<p className="mt-4 text-sm text-[var(--color-light)] md:text-base lg:text-lg">
-								Dengan Polaroweb, Anda bebas mendokumentasikan momen berharga menggunakan berbagai gaya polaroid yang unik dan kreatif.
+								With Polaroweb, you're free to document precious moments using a variety of unique and creative polaroid styles.
 							</p>
 						</FadeContent>
 

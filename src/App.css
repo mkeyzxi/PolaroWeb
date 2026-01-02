@@ -4,7 +4,7 @@ body {
 
 /* Page Transition Animations - Only opacity, no transform to preserve fixed positioning */
 .page-transition-container {
-	transition: opacity 0.3s ease-out;
+	transition: opacity 0.2s ease-out;
 	will-change: opacity;
 }
 

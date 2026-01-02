@@ -19,11 +19,13 @@ function App() {
       <Header>
         <Nav />
       </Header>
+      <Routes>
 
+        <Route path="" element={<Beranda />} />
+        <Route path="/" element={<Beranda />} />
+      </Routes>
       <PageTransition>
         <Routes>
-          <Route path="" element={<Beranda />} />
-          <Route path="/" element={<Beranda />} />
           <Route path="/:category" element={<CustomPage />} />
           <Route path="/creative-layouts/:type" element={<CreativeLayoutsPage />} />
           <Route path="/classic-polaroid/:type" element={<ClassicPolaroidPage />} />

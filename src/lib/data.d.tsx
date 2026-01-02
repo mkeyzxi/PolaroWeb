@@ -1,7 +1,7 @@
 // src/lib/data.ts
 export interface PolaroidCategory {
-  header: string; // Header untuk TitleForPage
-  description: string; // untuk paragraf
+  header: string; // Header for TitleForPage
+  description: string; // for paragraph
   items: string[]; // subHeader
   link: string[];
 }
@@ -10,30 +10,29 @@ export const dataPolaroid: Record<string, PolaroidCategory> = {
   "classic-polaroid": {
     header: "Classic Polaroid",
     description:
-      "Foto instan dengan nuansa vintage yang ikonik. Cocok untuk mengabadikan momen nostalgia.",
+      "Instant photos with iconic vintage vibes. Perfect for capturing nostalgic moments.",
     items: ["Square", "Wide", "Mini"],
     link: ["/classic-polaroid/square", "/classic-polaroid/wide", "/classic-polaroid/mini"]
   },
   "strip-layout": {
     header: "Strip Layout",
     description:
-      "Cetakan foto dalam bentuk strip yang unik dan dinamis, sempurna untuk menceritakan serangkaian momen.",
+      "Unique and dynamic strip photo prints, perfect for telling a series of moments.",
     items: ["3strips", "4strips"],
     link: ["/strip-layout/3strips", "/strip-layout/4strips"]
   },
   "photo-prints": {
     header: "Photo Prints",
     description:
-      "Cetakan foto standar berkualitas tinggi yang fleksibel untuk berbagai keperluan, dari bingkai hingga album.",
+      "High-quality standard photo prints that are flexible for various purposes, from frames to albums.",
     items: ["2r", "3r", "4r"],
     link: ["/photo-prints/2r", "/photo-prints/3r", "/photo-prints/4r"]
   },
   "creative-layouts": {
     header: "Creative Layouts",
     description:
-      "Cetakan foto dengan format inovatif yang memungkinkan Anda mengeksplorasi kreativitas dan tampil beda.",
+      "Photo prints with innovative formats that let you explore creativity and stand out.",
     items: ["Snapshoot6", "Snapshoot8"],
     link: ["/creative-layouts/Snapshoot6", "/creative-layouts/Snapshoot8"]
   },
 };
-

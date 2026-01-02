@@ -69,7 +69,7 @@ const BackgroundPicker: React.FC<BackgroundPickerProps> = ({
 			<div className="bg-white rounded-2xl w-full max-w-lg max-h-[80vh] overflow-hidden shadow-2xl">
 				{/* Header */}
 				<div className="flex items-center justify-between p-4 border-b">
-					<h2 className="text-lg font-semibold text-gray-800">Pilih Background</h2>
+					<h2 className="text-lg font-semibold text-gray-800">Choose Background</h2>
 					<button
 						onClick={onClose}
 						className="p-2 hover:bg-gray-100 rounded-full transition-colors"
@@ -98,7 +98,7 @@ const BackgroundPicker: React.FC<BackgroundPickerProps> = ({
 							}`}
 					>
 						<Palette size={18} />
-						<span className="hidden sm:inline">Warna</span>
+						<span className="hidden sm:inline">Color</span>
 					</button>
 					<button
 						onClick={() => setActiveTab("upload")}
@@ -145,7 +145,7 @@ const BackgroundPicker: React.FC<BackgroundPickerProps> = ({
 									className="w-16 h-16 rounded-lg cursor-pointer border-2 border-gray-200"
 								/>
 								<div className="flex-1">
-									<label className="text-sm text-gray-600">Warna Terpilih</label>
+									<label className="text-sm text-gray-600">Selected Color</label>
 									<input
 										type="text"
 										value={selectedColor}
@@ -157,7 +157,7 @@ const BackgroundPicker: React.FC<BackgroundPickerProps> = ({
 
 							{/* Preset Colors */}
 							<div>
-								<label className="text-sm text-gray-600 mb-2 block">Warna Cepat</label>
+								<label className="text-sm text-gray-600 mb-2 block">Quick Colors</label>
 								<div className="grid grid-cols-5 gap-2">
 									{presetColors.map((color) => (
 										<button
@@ -178,7 +178,7 @@ const BackgroundPicker: React.FC<BackgroundPickerProps> = ({
 								onClick={handleColorApply}
 								className="w-full py-3 bg-[var(--color-primary)] text-white rounded-lg font-medium hover:brightness-90 transition-all"
 							>
-								Terapkan Warna
+								Apply Color
 							</button>
 						</div>
 					)}
@@ -198,7 +198,7 @@ const BackgroundPicker: React.FC<BackgroundPickerProps> = ({
 								className="border-2 border-dashed border-gray-300 rounded-2xl p-8 hover:border-[var(--color-primary)] hover:bg-[var(--color-primary)]/5 transition-all cursor-pointer"
 							>
 								<Upload size={48} className="mx-auto text-gray-400 mb-4" />
-								<p className="text-gray-600 font-medium">Klik untuk upload gambar</p>
+								<p className="text-gray-600 font-medium">Click to upload image</p>
 								<p className="text-gray-400 text-sm mt-2">JPG, PNG, WEBP (max 10MB)</p>
 							</div>
 						</div>
