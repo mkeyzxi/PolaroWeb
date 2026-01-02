@@ -218,7 +218,7 @@ const ClassicPolaroid: React.FC = () => {
         keywords={seoData['classic-polaroid'].keywords}
         canonicalUrl={seoData['classic-polaroid'].canonicalPath}
       />
-      <div className="p-4 text-center md:mt-15 mb-20 md:mb-0">
+      <div className="p-4 text-center  md:mt-15 mb-20 md:mb-0">
         <TitleForPage
           header="Classic Polaroid"
           category="classic-polaroid"
